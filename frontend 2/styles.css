@@ -1,0 +1,97 @@
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 컨테이너 */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 로고 */
+.logo h1 {
+    margin: 0;
+}
+
+/* 검색창 스타일링 */
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 350px;  /* 적당한 길이 */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* 방명록 링크 스타일링 */
+.guestbook-link a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+.guestbook-link a:hover {
+    text-decoration: underline;
+}
+
+/* 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 콘텐츠 영역 */
+.content-wrapper {
+    display: flex;
+    margin-top: 20px;
+}
+
+/* 사이드바 스타일링 */
+.sidebar {
+    width: 125px; /* 사이드바 너비 */
+    background-color: #f0f0f0; /* 배경색 */
+    box-shadow: 3px 0px 5px rgba(0, 0, 0, 0.1); /* 음영 처리 */
+    padding: 20px;
+    /* border: 1px solid red; */
+    margin-left: 2vw;
+    text-align: center;
+    height: 80vh;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #007bff;
+}
+
+/* 본문 내용 스타일링 */
+.main-content {
+    flex-grow: 1; /* 남은 공간을 채우도록 설정 */
+    padding: 20px;
+}
