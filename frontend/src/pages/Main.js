@@ -82,6 +82,7 @@ function Main() {
                 </Card>
             ))}
         </CardContainer>
+        
     );
 }
 
