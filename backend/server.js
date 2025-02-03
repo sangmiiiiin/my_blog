@@ -29,6 +29,8 @@ app.get("/posts", async (req, res) => {
     res.json(posts);
 });
 
+// try catch 문으로 예외처리 하여 올바르지 않은 요청에도 서버가 종료되지 않도록 할 것.
+
 // 2️⃣ 특정 글 조회 (GET /posts/:id)
 app.get("/posts/:id", async (req, res) => {
     const post = await Post.findById(req.params.id);
