@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-import { response } from 'express';
+
 
 const Main = () => {
     const [posts, setPosts] = useState([
@@ -82,7 +82,7 @@ const Main = () => {
     return (
         <CardContainer>
             {posts.map(post => (
-                <Card key={post.id}>
+                <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
                     <Thumbnail src={post.thumbnail} alt={post.title} />
                     <CardContent>
                         <Title>{post.title}</Title>
