@@ -1,8 +1,11 @@
 // src/pages/Main.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { response } from 'express';
 
-function Main() {
+const Main = () => {
     const [posts, setPosts] = useState([
         {
             id: 1,
@@ -68,6 +71,13 @@ function Main() {
             link: '/post/9',
         },
     ]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get("http://localhost:27017/posts")
+            .then(response => setPosts(response.data))
+            .catch(error => console.error("데이터 불러오기 오류:", error ) );
+    }, []);
 
     return (
         <CardContainer>
