@@ -74,7 +74,7 @@ const Main = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:27017/posts")
+        axios.get("http://localhost:5700/posts")
             .then(response => setPosts(response.data))
             .catch(error => console.error("데이터 불러오기 오류:", error ) );
     }, []);
