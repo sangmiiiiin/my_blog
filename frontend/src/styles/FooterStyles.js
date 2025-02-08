@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer`
   padding: 20px;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 97%;
 `;
 
 export const FooterText = styled.p`

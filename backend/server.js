@@ -7,6 +7,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static('public/uploads'));
 
 // MongoDB 연결
 // mongoose.connect("mongodb://localhost:27017/blogDB", {
@@ -42,8 +43,13 @@ const Post = mongoose.model("Post", postSchema);
 
 // 1️⃣ 모든 글 조회 (GET /posts)
 app.get("/posts", async (req, res) => {
-    const posts = await Post.find();
-    res.json(posts);
+    try {
+        const posts = await Post.find();
+        res.json(posts);
+    } catch (err) {
+        console.error("❌ 게시글 조회 실패:", err);
+        res.status(500).json({ message: "서버 오류로 인해 게시글을 불러올 수 없습니다."});
+    }
 });
 
 // try catch 문으로 예외처리 하여 올바르지 않은 요청에도 서버가 종료되지 않도록 할 것.
@@ -66,7 +72,7 @@ app.post("/posts", async (req, res) => {
 app.put("/posts/:id", async (req, res) => {
     const updatePost = await Post.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatePost) return res.status(404).send("글을 찾을 수 없습니다.");
-    res.json(updatedPost);
+    res.json(updatePost);
 });
 
 // 5️⃣ 글 삭제 (DELETE /posts/:id)
