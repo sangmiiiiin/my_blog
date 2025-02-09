@@ -6,6 +6,7 @@ export const CardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);  // 3개의 열로 분할
   gap: 20px;    // 각 카드 사이 (가로, 세로 모두)
   padding: 20px;    // 컨테이너 안에 있는 태그들의 여백을 설정
+  border: 1px solid red;
 `;
 
 export const Card = styled.div`
@@ -51,4 +52,8 @@ export const ReadMore = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const PostButton = styled.button`
+  
 `;
