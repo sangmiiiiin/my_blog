@@ -1,4 +1,8 @@
 package.json
 package-lock.json
 
-/node_modules
+node_modules
+
+images.jpeg
+
+React_logo2.webp
