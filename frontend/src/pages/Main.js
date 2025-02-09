@@ -1,6 +1,6 @@
 // src/pages/Main.js
 import React, { useEffect, useState } from 'react';
-import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
+import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore, PostButton } from '../styles/MainStyles'; // 스타일 파일에서 import
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -80,6 +80,7 @@ const Main = () => {
     }, []);
 
     return (
+        <>
         <CardContainer>
             {posts.map(post => (
                 <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
@@ -92,7 +93,8 @@ const Main = () => {
                 </Card>
             ))}
         </CardContainer>
-        
+        <PostButton onClick={() => navigate(`/create`)}>새 글 작성</PostButton>
+        </>
     );
 }
 
