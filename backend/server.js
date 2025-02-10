@@ -76,10 +76,28 @@ app.put("/posts/:id", async (req, res) => {
 });
 
 // 5️⃣ 글 삭제 (DELETE /posts/:id)
+// app.delete("/posts/:id", async (req, res) => {
+//     const deletedPost = await Post.findOneAndDelete(req.params.id);
+//     if (!deletedPost) return res.status(404).send("글을 찾을 수 없습니다.");
+//     res.json({ message: "삭제 완료!" });
+// });
 app.delete("/posts/:id", async (req, res) => {
-    const deletedPost = await Post.findOneAndDelete(req.params.id);
-    if (!deletedPost) return res.status(404).send("글을 찾을 수 없습니다.");
-    res.json({ message: "삭제 완료!" });
+    try {
+        console.log("🔍 삭제 요청 ID:", req.params.id); // ID 로그 출력
+
+        const deletedPost = await Post.findOneAndDelete({ _id: req.params.id });
+
+        if (!deletedPost) {
+            console.log("❌ 해당 ID의 게시글이 없습니다:", req.params.id);
+            return res.status(404).send("글을 찾을 수 없습니다.");
+        }
+
+        console.log("✅ 삭제된 게시글:", deletedPost);
+        res.json({ message: "삭제 완료!", deletedPost });
+    } catch (err) {
+        console.error("❌ 삭제 중 오류 발생:", err);
+        res.status(500).json({ message: "서버 오류로 인해 삭제할 수 없습니다." });
+    }
 });
 
 const PORT = 5700;
