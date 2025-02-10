@@ -18,7 +18,7 @@ const Detail = () => {
 
     const handleDelete = () => {
         axios.delete(`http://localhost:5700/posts/${id}`)
-            .then(() => alert("삭제가 완료 되었습니다."))
+            // .then(() => alert("삭제가 완료 되었습니다."))
             .then(() => navigate("/"))
             .catch(error => console.error("삭제 오류:", error));
     };
