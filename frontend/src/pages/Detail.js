@@ -16,11 +16,17 @@ const Detail = () => {
             .catch(error => console.error("데이터 불러오기 오류:", error));
     }, [id]);
 
-    const handleDelete = () => {
-        axios.delete(`http://localhost:5700/posts/${id}`)
+    const handleDelete = async () => {
+        try {
+           const response = axios.delete(`http://localhost:5700/posts/${id}`);
+           console.log("삭제 성공:", response.data);
+           // () => navigate("/");
+        } catch(error) {
+            console.error("삭제 오류:", error);
+        }
             // .then(() => alert("삭제가 완료 되었습니다."))
-            .then(() => navigate("/"))
-            .catch(error => console.error("삭제 오류:", error));
+            // .then(() => navigate("/"))
+            // .catch(error => console.error("삭제 오류:", error));
     };
 
     if (!post) return <p>로딩 중...</p>;
