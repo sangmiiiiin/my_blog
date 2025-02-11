@@ -1,6 +1,7 @@
 // src/pages/Main.js
 import React, { useEffect, useState } from 'react';
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore, PostButton } from '../styles/MainStyles'; // 스타일 파일에서 import
+import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -93,7 +94,7 @@ const Main = () => {
                 </Card>
             ))}
         </CardContainer>
-        <PostButton onClick={() => navigate(`/create`)}>새 글 작성</PostButton>
+        <Button variant="contained" onClick={() => navigate(`/create`)}>새 글 작성</Button>
         </>
     );
 }
