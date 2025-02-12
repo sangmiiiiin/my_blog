@@ -3,17 +3,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { NewPostContainer, NewPostTitle, SaveButton, Textarea } from "../styles/CreateStyles";
+// import Alert from '@mui/material/Alert';
+
 
 const Create = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5700/posts", { title, content })
-            .then(() => navigate("/"))
-            .catch(error => console.error("글 작성 오류:", error));
+        try{
+            await axios.post("http://localhost:5700/posts", { title, content })
+            navigate("/", { state: { success: true } });
+        } catch(error) { 
+            console.error("글 작성 오류:", error)
+        };
     };
 
     return (
