@@ -1,8 +1,10 @@
 // src/pages/Main.js
 import React, { useEffect, useState } from 'react';
-import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore, PostButton } from '../styles/MainStyles'; // 스타일 파일에서 import
+import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
 import Button from '@mui/material/Button';
+import { Alert, Snackbar } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from "axios";
 
 
@@ -72,29 +74,51 @@ const Main = () => {
             link: '/post/9',
         },
     ]);
+    const location = useLocation();
+    const [alert, setAlert] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:5700/posts")
             .then(response => setPosts(response.data))
-            .catch(error => console.error("데이터 불러오기 오류:", error ) );
+            .catch(error => console.error("데이터 불러오기 오류:", error));
     }, []);
+
+    useEffect(() => {
+        // location.state에서 success 값이 true이면 Alert을 띄운다
+        if (location.state?.success) {
+            console.log("상태 전달 양호");
+            setAlert(true);
+
+            // 3초 후 Alert 자동 닫기
+            const timer = setTimeout(() => {
+                setAlert(false);
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [location.state]);
 
     return (
         <>
-        <CardContainer>
-            {posts.map(post => (
-                <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
-                    <Thumbnail src={post.thumbnail} alt={post.title} />
-                    <CardContent>
-                        <Title>{post.title}</Title>
-                        <Description>{post.description}</Description>
-                        <ReadMore href={post.link}>Read More</ReadMore>
-                    </CardContent>
-                </Card>
-            ))}
-        </CardContainer>
-        <Button variant="contained" onClick={() => navigate(`/create`)}>새 글 작성</Button>
+            <Snackbar open={alert} autoHideDuration={3000} onClose={() => setAlert(false)}>
+                <Alert onClose={() => setAlert(false)} severity="success" variant="filled">
+                    글이 성공적으로 작성되었습니다!
+                </Alert>
+            </Snackbar>
+            <CardContainer>
+                {posts.map(post => (
+                    <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
+                        <Thumbnail src={post.thumbnail} alt={post.title} />
+                        <CardContent>
+                            <Title>{post.title}</Title>
+                            <Description>{post.description}</Description>
+                            <ReadMore href={post.link}>Read More</ReadMore>
+                        </CardContent>
+                    </Card>
+                ))}
+            </CardContainer>
+            <Button variant="contained" onClick={() => navigate(`/create`)}>새 글 작성</Button>
         </>
     );
 }
