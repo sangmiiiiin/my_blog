@@ -20,7 +20,7 @@ const Detail = () => {
         try {
            const response = axios.delete(`http://localhost:5700/posts/${id}`);
            console.log("삭제 성공:", response.data);
-           // () => navigate("/");
+           navigate("/");
         } catch(error) {
             console.error("삭제 오류:", error);
         }
