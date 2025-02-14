@@ -75,7 +75,8 @@ const Main = () => {
         },
     ]);
     const location = useLocation();
-    const [alert, setAlert] = useState(false);
+    const [post, setPost] = useState(false);
+    const [del, setDel] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -88,24 +89,48 @@ const Main = () => {
         // location.state에서 success 값이 true이면 Alert을 띄운다
         if (location.state?.success) {
             console.log("상태 전달 양호");
-            setAlert(true);
+            setPost(true);
 
             // 3초 후 Alert 자동 닫기
             const timer = setTimeout(() => {
-                setAlert(false);
+                setPost(false);
+                navigate(location.state.success, { replace: true, state: {} });
             }, 3000);
 
             return () => clearTimeout(timer);
         }
-    }, [location.state]);
+    }, [location.state, navigate]);
+
+    useEffect(() => {
+        // location.state에서 success 값이 true이면 Alert을 띄운다
+        if (location.state?.delete) {
+            console.log("상태 전달 양호");
+            setDel(true);
+
+            // 3초 후 Alert 자동 닫기
+            const timer = setTimeout(() => {
+                setDel(false);
+                navigate(location.state.delete, { replace: true, state: {} });
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [location.state, navigate]);
 
     return (
         <>
-            <Snackbar open={alert} autoHideDuration={3000} onClose={() => setAlert(false)}>
-                <Alert onClose={() => setAlert(false)} severity="success" variant="filled">
+            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={post} autoHideDuration={3000} onClose={() => setPost(false)}>
+                <Alert onClose={() => setPost(false)} severity="success" variant="filled">
                     글이 성공적으로 작성되었습니다!
                 </Alert>
             </Snackbar>
+
+            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={del} autoHideDuration={3000} onClose={() => setDel(false)}>
+                <Alert onClose={() => setDel(false)} severity="error" variant="filled">
+                    글이 삭제되었습니다!
+                </Alert>
+            </Snackbar>
+
             <CardContainer>
                 {posts.map(post => (
                     <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
