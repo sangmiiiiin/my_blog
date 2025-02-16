@@ -7,6 +7,11 @@ export const CardContainer = styled.div`
   gap: 20px;    // 각 카드 사이 (가로, 세로 모두)
   padding: 20px;    // 컨테이너 안에 있는 태그들의 여백을 설정
   border: 0px solid red;
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
 `;
 
 export const Card = styled.div`
@@ -19,12 +24,18 @@ export const Card = styled.div`
   &:hover {
     transform: translateY(-5px);
   }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const Thumbnail = styled.img`
   width: 100%;
   height: 30vh;
   object-fit: cover;
+
+  
 `;
 
 export const CardContent = styled.div`
@@ -63,6 +74,13 @@ export const BannerBox = styled.div`
   width: 65vw;
   height: 40vh;
   margin-right: 2.5vw;
+
+  @media (max-width: 480px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 30vh;
+  }
 `;
 
 export const BannerImg = styled.img`
@@ -71,4 +89,9 @@ export const BannerImg = styled.img`
   height: 100%;
   object-fit: cover;
   object-position: 0 5%;
+
+  @media (max-width: 480px) {
+    object-fit: contain;
+    /* object-position: 10%; */
+  }
 `;

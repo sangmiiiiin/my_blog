@@ -51,7 +51,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div>
-      <DynamicFeedIcon onClick={toggleDrawer(true)} sx={{ display: { xs: 'none', md: 'flex' }, mr: 3, cursor: 'pointer' }} />
+      <DynamicFeedIcon onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', md: 'flex' }, mr: 3, cursor: 'pointer' }} />
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
