@@ -93,9 +93,9 @@ const Main = () => {
                 </Alert>
             </Snackbar>
 
-            <Box display="flex" justifyContent="end" width="100%" sx={{ mb: -4 }}>
+            <Box display="flex" justifyContent="end" width="100%" sx={{ mb: { xs: 10 } -4, display: { xs: 'block'} }}>
                 <BannerBox>
-                    <BannerImg src={BannerImage}/>
+                    <BannerImg src={BannerImage} />
                 </BannerBox>
                 <Calender />
             </Box>
