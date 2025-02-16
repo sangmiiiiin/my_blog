@@ -17,6 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 
 import HeaderDrawer from '../components/HeaderDrawer';
+import CreateButton from '../components/CreateButton';
 
 const pages = ['Guestbook', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -135,7 +136,9 @@ function Header() {
         >
           Sangmin's Blog
         </Typography>
+        
         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+        <CreateButton />
           {pages.map((page) => (
             <Button
               key={page}
