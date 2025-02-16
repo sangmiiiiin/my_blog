@@ -85,14 +85,14 @@ function Header() {
 
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
           <IconButton
-            size="large"
+            size="medium"
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={handleOpenNavMenu}
             color="inherit"
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
           <Menu
             id="menu-appbar"
@@ -117,7 +117,7 @@ function Header() {
             ))}
           </Menu>
         </Box>
-        <DynamicFeedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
         <Typography
           variant="h5"
           noWrap
@@ -126,10 +126,10 @@ function Header() {
           sx={{
             mr: 2,
             display: { xs: 'flex', md: 'none' },
-            flexGrow: 1,
+            flexGrow: 10,
             fontFamily: 'monospace',
             fontWeight: 700,
-            letterSpacing: '.3rem',
+            letterSpacing: '0.1rem',
             color: 'inherit',
             textDecoration: 'none',
           }}
