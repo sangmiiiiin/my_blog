@@ -31,48 +31,6 @@ const Main = () => {
             description: '세 번째 게시글 내용 요약',
             link: '/post/3',
         },
-        {
-            id: 4,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '네 번째 게시글 제목',
-            description: '네 번째 게시글 내용 요약',
-            link: '/post/4',
-        },
-        {
-            id: 5,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '다섯 번째 게시글 제목',
-            description: '다섯 번째 게시글 내용 요약',
-            link: '/post/5',
-        },
-        {
-            id: 6,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '여섯 번째 게시글 제목',
-            description: '여섯 번째 게시글 내용 요약',
-            link: '/post/6',
-        },
-        {
-            id: 7,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '일곱 번째 게시글 제목',
-            description: '일곱 번째 게시글 내용 요약',
-            link: '/post/7',
-        },
-        {
-            id: 8,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '여덟 번째 게시글 제목',
-            description: '여덟 번째 게시글 내용 요약',
-            link: '/post/8',
-        },
-        {
-            id: 9,
-            thumbnail: 'https://via.placeholder.com/400x200',
-            title: '아홉 번째 게시글 제목',
-            description: '아홉 번째 게시글 내용 요약',
-            link: '/post/9',
-        },
     ]);
     const location = useLocation();
     const [post, setPost] = useState(false);
