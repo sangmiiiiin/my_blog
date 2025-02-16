@@ -57,3 +57,18 @@ export const ReadMore = styled.a`
 export const PostButton = styled.button`
   
 `;
+
+export const BannerBox = styled.div`
+  border: 0px solid black;
+  width: 65vw;
+  height: 40vh;
+  margin-right: 2.5vw;
+`;
+
+export const BannerImg = styled.img`
+  margin-top: 1vw;
+  width: 94%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 5%;
+`;

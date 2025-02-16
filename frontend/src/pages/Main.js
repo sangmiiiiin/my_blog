@@ -1,11 +1,14 @@
 // src/pages/Main.js
 import React, { useEffect, useState } from 'react';
-import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
+import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore, BannerBox, BannerImg } from '../styles/MainStyles'; // 스타일 파일에서 import
 import { Alert, Box, Snackbar } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
 import Calender from '../components/Calender';
+
+import BannerImage from '../image/Banner_img1.png';
+
 
 
 
@@ -90,7 +93,10 @@ const Main = () => {
                 </Alert>
             </Snackbar>
 
-            <Box display="flex" justifyContent="end" width="100%">
+            <Box display="flex" justifyContent="end" width="100%" sx={{ mb: -4 }}>
+                <BannerBox>
+                    <BannerImg src={BannerImage}/>
+                </BannerBox>
                 <Calender />
             </Box>
 
