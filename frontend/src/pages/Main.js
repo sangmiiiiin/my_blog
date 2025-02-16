@@ -1,7 +1,7 @@
 // src/pages/Main.js
 import React, { useEffect, useState } from 'react';
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description, ReadMore } from '../styles/MainStyles'; // 스타일 파일에서 import
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Box, Snackbar } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
@@ -89,7 +89,11 @@ const Main = () => {
                     글이 삭제되었습니다!
                 </Alert>
             </Snackbar>
-            <Calender />
+
+            <Box display="flex" justifyContent="end" width="100%">
+                <Calender />
+            </Box>
+
             <CardContainer>
                 {posts.map(post => (
                     <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
