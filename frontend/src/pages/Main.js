@@ -93,7 +93,14 @@ const Main = () => {
                 </Alert>
             </Snackbar>
 
-            <Box display="flex" justifyContent="end" width="100%" sx={{ mb: { xs: 10 } -4, display: { xs: 'block'} }}>
+            <Box
+                justifyContent="end"
+                width="100%"
+                sx={{
+                    mb: { xs: 10 } - 4,
+                    display: { xs: 'block', md: 'flex' },
+                }}
+            >
                 <BannerBox>
                     <BannerImg src={BannerImage} />
                 </BannerBox>
