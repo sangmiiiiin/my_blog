@@ -11,7 +11,7 @@ const Create = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://192.168.10.101:5700/posts", { title, content });
+            await axios.post("http://192.168.10.100:5700/posts", { title, content });
             navigate("/", { state: { success: true } });
         } catch (error) {
             console.error("글 작성 오류:", error);
