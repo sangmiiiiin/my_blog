@@ -42,7 +42,7 @@ const Main = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://192.168.10.100:5700/posts")
+        axios.get("http://192.168.10.102:5700/posts")
             .then(response => setPosts(response.data))
             .catch(error => console.error("데이터 불러오기 오류:", error));
     }, []);
