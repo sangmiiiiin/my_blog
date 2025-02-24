@@ -69,7 +69,7 @@ const Detail = () => {
 
     const handleDelete = async () => {
         try {
-           await axios.delete(`http://192.168.10.100:5700/posts/${id}`);
+           await axios.delete(`http://192.168.10.102:5700/posts/${id}`);
            navigate("/", { state: { delete: true } });
         } catch(error) {
             console.error("삭제 오류:", error);
