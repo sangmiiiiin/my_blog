@@ -54,7 +54,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
+import { Card, CardMedia, CardContent, Typography, Button, Box, Paper } from "@mui/material";
 
 const Detail = () => {
     const { id } = useParams();
@@ -62,7 +62,7 @@ const Detail = () => {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://192.168.10.100:5700/posts/${id}`)
+        axios.get(`http://192.168.10.102:5700/posts/${id}`)
             .then(response => setPost(response.data))
             .catch(error => console.error("데이터 불러오기 오류:", error));
     }, [id]);
@@ -79,14 +79,30 @@ const Detail = () => {
     if (!post) return <p>로딩 중...</p>;
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-            <Card sx={{ maxWidth: 600, p: 2, textAlign: "left" }}>
+        <Box 
+            display="flex" 
+            justifyContent="center" 
+            alignItems="center" 
+            minHeight="100vh"
+            // border="1px solid red"
+            >
+            <Paper elevation={3} sx={{ marginTop: 4, padding: 4, width: "100%", maxWidth: 600 }}>
+            <Card
+                variant="outlined"
+                sx={{ 
+                    width: "100%",
+                    objectFit: "cover",
+                    height: "auto"
+                    }}>
                 <CardMedia
                     component="img"
-                    height="300"
                     image={post.thumbnail}
                     alt="썸네일 이미지"
-                    sx={{ objectFit: "cover", display: "block", margin: "0 auto" }}
+                    sx={{ 
+                        objectFit: "cover", 
+                        height: "auto",
+                        width: "100%"
+                    }}
                 />
                 <CardContent>
                     <Typography variant="h4" gutterBottom>
@@ -101,6 +117,7 @@ const Detail = () => {
                     <Button variant="contained" color="error" onClick={handleDelete}>삭제</Button>
                 </Box>
             </Card>
+            </Paper>
         </Box>
     );
 };
