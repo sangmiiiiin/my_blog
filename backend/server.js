@@ -16,6 +16,11 @@ app.use("/posts", postRoutes);  // 블로그 API 엔드포인트
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
+app.use((req, res, next) => {
+    console.log(`📌 요청: ${req.method} ${req.url}`);
+    next();
+});
+
 const PORT = process.env.PORT || 5700;
 app.listen(PORT, () => {
     console.log(`🚀 서버 실행 중: http://localhost:${PORT}`);
