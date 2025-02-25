@@ -5,7 +5,7 @@ const path = require("path");
 
 const connectToDatabase = require("./config/db");
 
-const uploadRoutes = require("./routes/uploadRoutes");
+const uploadRoutes = require("./routes/uploadRoute");
 const postRoutes = require("./routes/postRoutes");
 
 dotenv.config();
