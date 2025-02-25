@@ -18,10 +18,14 @@ const upload = multer({ storage });
 
 // 이미지 업로드 API
 router.post("/", upload.single("image"), (req, res) => {
+    console.log("📌 요청 도착: /upload");
+    console.log("📌 업로드된 파일 정보:", req.file);
+
     if (!req.file) {
+        console.error("❌ 파일 없음");
         return res.status(400).json({ message: "이미지 업로드 실패"});
     }
-    res.json({ imageUrl: `/public/${req.file.filename}` });
+    res.json({ imageUrl: `http://192.168.10.102:5700/public/${req.file.filename}` });
 });
 
 module.exports = router;
