@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
         res.status(201).json({
             message: "회원가입 성공!",
             user: {
-                id: newUser_id,
+                id: newUser._id,
                 username: newUser.username,
                 email: newUser.email,
             }
