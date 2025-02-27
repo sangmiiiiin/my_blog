@@ -7,6 +7,7 @@ const connectToDatabase = require("./config/db");
 
 const uploadRoutes = require("./routes/uploadRoute");
 const postRoutes = require("./routes/postRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 dotenv.config();
 connectToDatabase();  // MongoDB 연결
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/posts", postRoutes);  // 블로그 API 엔드포인트
-
+app.use("/auth", authRoutes); // 회원가입 & 로그인 API 추가
 app.use("/upload", uploadRoutes);  // 업로드 API 추가
 app.use("/public", express.static("public"));  // 정적 파일 제공
 
