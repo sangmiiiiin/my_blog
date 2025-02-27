@@ -7,7 +7,10 @@ const registerUser = async (req, res) => {
 
     try {
          // 1️⃣ 기존 사용자 확인 (중복 체크)
-        
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "이미 사용중인 이메일 입니다."});
+        }
 
         // 2️⃣ 새로운 사용자 생성
         const newUser = new User({ username, email, password });
