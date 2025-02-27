@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 
 const connectToDatabase = async () => {
     try {
-        await mongoose.connect("mongodb://localhost:27017/blogDB", {
+        await mongoose.connect(`mongodb://localhost:${process.env.DB_PORT}/${process.env.DB_DATABASE}`, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
