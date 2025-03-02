@@ -29,10 +29,13 @@ export default function TemporaryDrawer() {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        {['Inbox', 'Starred', '새 글 작성', 'Drafts'].map((text, index) => (
+        {['회원가입', '로그인', '새 글 작성', '방명록'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton
-              onClick={() => text === "새 글 작성" && handleNavigate("/create")}
+              onClick={() => {
+                text === "새 글 작성" && handleNavigate("/create");
+                text === "회원가입" && handleNavigate("/register");
+              }}
             >
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -44,7 +47,7 @@ export default function TemporaryDrawer() {
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['비지니스 문의', '건의사항', '메뉴'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
