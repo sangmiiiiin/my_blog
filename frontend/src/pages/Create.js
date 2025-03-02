@@ -29,7 +29,7 @@ const Create = () => {
             formData.append("image", imageFile);
 
             try {
-                const response = await axios.post("http://192.168.10.102:5700/upload", formData, {
+                const response = await axios.post("http://localhost:5700/upload", formData, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
                 imageUrl = (response.data.imageUrl); // 이미지 URL 저장
@@ -40,7 +40,7 @@ const Create = () => {
         }
         // 2️⃣ 글 저장
         try {
-            await axios.post("http://192.168.10.102:5700/posts", { 
+            await axios.post("http://localhost:5700/posts", { 
                 title, 
                 content,
                 thumbnail: imageUrl, // 업로드된 이미지 URL 저장
