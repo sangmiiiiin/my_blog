@@ -5,6 +5,7 @@ import Main from './pages/Main';
 import Create from './pages/Create';
 import Edit from './pages/Edit';
 import Post from './pages/Detail';
+import Register from './pages/Register';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/create' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/posts/:id' element={<Post />} />
+          <Route path='/register' element={<Register />} />
           {/* <Route path="/guestbook" element={<Guestbook />} /> */}
         </Routes>
       </Layout>
