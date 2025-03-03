@@ -15,10 +15,6 @@ const Register = () => {
     const [passwordErrors, setPasswordErrors] = useState([]);
     const navigate = useNavigate();
 
-    const duplicateNickname = (username) => {
-        
-    }
-
     const validatePassword = (password) => {
         const errors = [];
         if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) errors.push("❌ 특수문자 1자 이상 포함해야 합니다.");
