@@ -6,6 +6,7 @@ import Create from './pages/Create';
 import Edit from './pages/Edit';
 import Post from './pages/Detail';
 import Register from './pages/Register';
+import Login from './pages/Login';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/posts/:id' element={<Post />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
           {/* <Route path="/guestbook" element={<Guestbook />} /> */}
         </Routes>
       </Layout>
