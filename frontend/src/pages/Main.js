@@ -94,7 +94,7 @@ const Main = () => {
             </Snackbar>
 
             <Box
-                justifyContent="end"
+                justifyContent="center"
                 width="100%"
                 sx={{
                     mb: { xs: 10 } - 4,
