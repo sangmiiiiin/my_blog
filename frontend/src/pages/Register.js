@@ -65,7 +65,6 @@ const Register = () => {
                                 margin="normal"
                                 required
                             />
-                            <Button variant="contained" sx={{fontSize: 11}}>중복확인</Button>
                             </Box>
                             <Box display="flex" gap={1}>
                                 <TextField
