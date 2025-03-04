@@ -97,7 +97,7 @@ const Edit = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await axios.get(`http://192.168.10.102:5700/posts/${id}`);
+                const response = await axios.get(`http://192.168.10.103:5700/posts/${id}`);
                 // setPost(response.data);
                 setTitle(response.data.title);
                 setContent(response.data.content);
