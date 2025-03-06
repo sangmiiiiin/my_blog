@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box, Button, Card, CardContent, Paper, TextField, Typography } from "@mui/material";
 
+
 const Create = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
