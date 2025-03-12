@@ -124,7 +124,7 @@ function Header() {
           >
             Sangmin's Blog
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+          <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {pages.map((page) => (
               page === "Login" ? (
                 <Link key={page} to="/login" style={{ textDecoration: 'none' }}>
