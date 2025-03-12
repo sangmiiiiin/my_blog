@@ -25,3 +25,6 @@ yarn-error.log*
 /package.json
 /package-lock.json
 
+# image
+/src/image
+
