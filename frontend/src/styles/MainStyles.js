@@ -33,7 +33,7 @@ export const Card = styled.div`
 export const Thumbnail = styled.img`
   width: 100%;
   height: 30vh;
-  object-fit: cover;
+  object-fit: contain;
 
   
 `;
