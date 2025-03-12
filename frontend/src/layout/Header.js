@@ -146,6 +146,16 @@ function Header() {
                     {page}
                   </Button>
                 </Link>
+              ) : ((page === "Home" ? (
+                <Link key={page} to="/" style={{ textDecoration: 'none ' }}>
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'black' }}
+                  >
+                    {page}
+                  </Button>
+                </Link>
               ) : (
                 <Button
                   key={page}
@@ -155,6 +165,7 @@ function Header() {
                   {page}
                 </Button>
               )
+              ))
             ))}
           </Box>
           {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>

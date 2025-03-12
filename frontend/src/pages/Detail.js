@@ -62,14 +62,14 @@ const Detail = () => {
     const [post, setPost] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://192.168.10.103:5700/posts/${id}`)
+        axios.get(`http://localhost:5700/posts/${id}`)
             .then(response => setPost(response.data))
             .catch(error => console.error("데이터 불러오기 오류:", error));
     }, [id]);
 
     const handleDelete = async () => {
         try {
-           await axios.delete(`http://192.168.10.103:5700/posts/${id}`);
+           await axios.delete(`http://localhost:5700/posts/${id}`);
            navigate("/", { state: { delete: true } });
         } catch(error) {
             console.error("삭제 오류:", error);
