@@ -8,6 +8,7 @@ import axios from "axios";
 import Calender from '../components/Calender';
 
 import BannerImage from '../image/Banner_img1.png';
+import CarouselRatio from '../components/Carousel';
 
 
 
@@ -42,7 +43,7 @@ const Main = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://192.168.10.103:5700/posts")
+        axios.get("http://localhost:5700/posts")
             .then(response => setPosts(response.data))
             .catch(error => console.error("데이터 불러오기 오류:", error));
     }, []);
@@ -81,6 +82,7 @@ const Main = () => {
 
     return (
         <>
+            <CarouselRatio />
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={post} autoHideDuration={3000} onClose={() => setPost(false)}>
                 <Alert onClose={() => setPost(false)} severity="success" variant="filled">
                     글이 성공적으로 작성되었습니다!

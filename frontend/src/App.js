@@ -7,6 +7,7 @@ import Edit from './pages/Edit';
 import Post from './pages/Detail';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Test from './pages/Test';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/posts/:id' element={<Post />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/test' element={<Test />} />
           {/* <Route path="/guestbook" element={<Guestbook />} /> */}
         </Routes>
       </Layout>
