@@ -26,14 +26,14 @@ const MUICarousel = () => {
   ];
 
   return (
-    <div style={{ width: "100%", margin: "auto" }}>
+    <div style={{ width: "100%", marginBottom: "5%" }}>
       <Slider {...settings}>
         {items.map((item, index) => (
           <Card key={index}>
             <CardMedia sx={{ objectFit: "fill" }} component="img" height="300" image={item.image} alt={item.title} />
-            <CardContent>
+            {/* <CardContent>
               <Typography variant="h6">{item.title}</Typography>
-            </CardContent>
+            </CardContent> */}
           </Card>
         ))}
       </Slider>
