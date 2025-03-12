@@ -2,7 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css"; 
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+// import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+ import { Card, CardMedia } from "@mui/material";
 
 import image1 from "../image/clothes-1.jpg";
 import image2 from "../image/clothes-2.jpg";

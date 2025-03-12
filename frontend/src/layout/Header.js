@@ -122,7 +122,7 @@ function Header() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              ml: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 10,
               fontFamily: 'monospace',
