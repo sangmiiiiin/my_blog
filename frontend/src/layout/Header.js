@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import HeaderDrawer from '../components/HeaderDrawer';
 import CreateButton from '../components/CreateButton';
 
-const pages = ['Guestbook', 'Home', 'Login'];
+const pages = ['Create', 'Guestbook', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -135,7 +135,6 @@ function Header() {
             Sangmin's Blog
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            <CreateButton />
             {pages.map((page) => (
               page === "Login" ? (
                 <Link key={page} to="/login" style={{ textDecoration: 'none' }}>
@@ -156,7 +155,16 @@ function Header() {
                     {page}
                   </Button>
                 </Link>
-              ) : (
+              ) : ((page === "Create" ? (
+                <Link key={page} to="/create" style={{ textDecoration: 'none ' }}>
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'black' }}
+                  >
+                    {page}
+                  </Button>
+                </Link> ) :
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
@@ -165,7 +173,7 @@ function Header() {
                   {page}
                 </Button>
               )
-              ))
+              )))
             ))}
           </Box>
           {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
