@@ -5,9 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 // import { Card, CardMedia, CardContent, Typography } from "@mui/material";
  import { Card, CardMedia } from "@mui/material";
 
-import image1 from "../image/clothes-1.jpg";
-import image2 from "../image/clothes-2.jpg";
-import image3 from "../image/clothes-3.jpg";
+import image1 from "../image/banner01.png";
+import image2 from "../image/banner02.png";
 
 const MUICarousel = () => {
   const settings = {
@@ -23,7 +22,6 @@ const MUICarousel = () => {
   const items = [
     { title: "클라이밍 바지", image: image1 },
     { title: "클라이밍 상의", image: image2 },
-    { title: "초크백", image: image3 }
   ];
 
   return (
@@ -31,7 +29,7 @@ const MUICarousel = () => {
       <Slider {...settings}>
         {items.map((item, index) => (
           <Card key={index} sx={{ borderRadius: "8px" }}>
-            <CardMedia sx={{ objectFit: "fill" }} component="img" height="300" image={item.image} alt={item.title} />
+            <CardMedia sx={{ objectFit: "fill" }} component="img" height="350" image={item.image} alt={item.title} />
             {/* <CardContent>
               <Typography variant="h6">{item.title}</Typography>
             </CardContent> */}
