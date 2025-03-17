@@ -18,6 +18,10 @@ export const Background = styled.header`
     background-position: center;
     height: 100vh;
     max-height: 100vh;
+
+    @media only screen and (max-width: 320px) {
+        width: 100%;
+    }
 `
 export const HeaderContents = styled.div`
     text-align: center;
@@ -26,14 +30,12 @@ export const HeaderContents = styled.div`
 `
 
 export const UnderLine = styled.hr`
-    display: block;
-    padding: 0;
     width: 21em;
-    height: 0;
-    max-height: 0;
-    line-height: 1;
-    margin: 0.5em auto 0.5em auto;
     border-width: 2px;
+
+    @media screen and (max-width: 380px){
+        width: 13em;
+    }
 `
 const commonSocialIcon = `
     width: 3vw;

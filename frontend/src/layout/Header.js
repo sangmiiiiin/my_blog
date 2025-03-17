@@ -107,13 +107,13 @@ function Header() {
           </Box>
 
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
-              ml: 2,
               display: { xs: 'flex', md: 'none' },
+              justifyContent: 'center',
               flexGrow: 10,
               fontFamily: 'monospace',
               fontWeight: 700,
