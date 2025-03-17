@@ -23,7 +23,7 @@ const uploadImage = (req, res) => {
         return res.status(400).json({ message: "이미지 업로드 실패" });
     }
 
-    res.json({ imageUrl: `http://192.168.10.100:5700/public/${req.file.filename}` });
+    res.json({ imageUrl: `http://localhost:5700/public/${req.file.filename}` });
 };
 
 module.exports = { upload, uploadImage };
