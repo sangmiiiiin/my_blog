@@ -1,11 +1,11 @@
 import React from "react";
-import { Background, Email, Github, HeaderContents, Instagram, Mail, Name, Position, SocialLink, SocialLinkItems, UnderLine, Velog } from "../components/LendingComponents";
-import Button from '@mui/material/Button';
+import { Background, Email, Github, HeaderContents, Instagram, Mail, Name, Position, SocialLink, SocialLinkItems, UnderLine, Velog } from "../styles/LendingStyles";
 
 import gitImg from "../image/github.svg";
 import InstaImg from "../image/instagram.svg";
 import MailImg from "../image/envelope-fill.svg";
 import VelogImg from "../image/velogImg.png";
+import GoShopButton from "../components/GoShopButton";
 
 const Lending = () => {
     const email = "kwk680037@gmail.com";
@@ -39,7 +39,7 @@ const Lending = () => {
                         <Velog src={VelogImg} />
                     </SocialLink>
                 </SocialLinkItems>
-                <Button variant="contained" href="/main">Go Shopping!</Button>
+                <GoShopButton />
             </HeaderContents>
         </Background>
     );
