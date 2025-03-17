@@ -8,6 +8,7 @@ import Post from './pages/Detail';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Test from './pages/Test';
+import Lending from './pages/Lending';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <Layout>
         <Routes>
+          <Route path="/Lending" element={<Lending />} />
           <Route path="/" element={<Main />} />
           <Route path='/create' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
