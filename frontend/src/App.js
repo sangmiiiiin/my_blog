@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/Lending" element={<Lending />} />
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Lending />} />
+          <Route path="/main" element={<Main />} />
           <Route path='/create' element={<Create />} />
           <Route path='/edit/:id' element={<Edit />} />
           <Route path='/posts/:id' element={<Post />} />
