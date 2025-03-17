@@ -1,5 +1,6 @@
 import React from "react";
 import { Background, Email, Github, HeaderContents, Instagram, Mail, Name, Position, SocialLink, SocialLinkItems, UnderLine, Velog } from "../components/LendingComponents";
+import Button from '@mui/material/Button';
 
 import gitImg from "../image/github.svg";
 import InstaImg from "../image/instagram.svg";
@@ -38,6 +39,7 @@ const Lending = () => {
                         <Velog src={VelogImg} />
                     </SocialLink>
                 </SocialLinkItems>
+                <Button variant="contained" href="/main">Go Shopping!</Button>
             </HeaderContents>
         </Background>
     );
