@@ -9,5 +9,5 @@ export const LayoutContainer = styled.div`
 
 export const MainContent = styled.main`
   flex: 1;
-  padding: 20px;
+  padding: 0px;
 `;
