@@ -16,8 +16,8 @@ const Lending = () => {
     return (
         <Background>
             <HeaderContents>
-                <Name>Sangmin's PortPolio</Name>
-                <Position>FrontEnd Developer</Position>
+                <Name>Sangmin's mall</Name>
+                <Position>climbing clothes</Position>
 
                 <UnderLine />
 
