@@ -50,9 +50,15 @@ const Login = () => {
                                 margin="normal"
                                 required
                             />
-                            <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+                            <Box display="flex" justifyContent="center">
+                            <Button type="submit" variant="contained" color="primary"  sx={{ mt: 2, width: "10vw", mr: 2 }}>
                                 로그인
                             </Button>
+                            <Button href="/register" type="button" variant="contained" color="success" sx={{ mt: 2, width: "10vw"}}>
+                                회원가입
+                            </Button>
+                            </Box>
+
                         </form>
                     </CardContent>
                 </Card>
