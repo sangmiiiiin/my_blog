@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // import { HeaderContainer, Logo, NavList, NavLink } from '../styles/HeaderStyles';  // 스타일 임포트
 
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 
-
 import HeaderDrawer from '../components/HeaderDrawer';
+import { jwtDecode } from "jwt-decode";
 
 const pages = ['Create', 'Guestbook', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -13,6 +13,19 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        setUser(decoded);
+      } catch (error) {
+        console.error("토큰 디코딩 오류:", error);
+      }
+    }
+  }, []);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,27 +41,11 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  }
   return (
-    // 죽은 코드
-    // <HeaderContainer>
-    //   <Logo>
-    //     <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>Sangmin's Blog</Link>
-    //   </Logo>
-    //   <nav>
-    //     <NavList>
-    //       <li>
-    //         <NavLink href="/">Home</NavLink>
-    //       </li>
-    //       <li>
-    //         <NavLink href="/guestbook">Guestbook</NavLink>
-    //       </li>
-    //       <li>
-    //         <NavLink href="/about">About</NavLink>
-    //       </li>
-    //     </NavList>
-    //   </nav>
-    // </HeaderContainer>
-
     <AppBar position="static" sx={{ backgroundColor: '#333' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -124,6 +121,7 @@ function Header() {
           >
             Sangmin's Blog
           </Typography>
+          
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {pages.map((page) => (
               page === "Login" ? (
@@ -166,18 +164,7 @@ function Header() {
               )))
             ))}
           </Box>
-          {/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-        <CreateButton />
-          {pages.map((page) => (
-            <Button
-              key={page}
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'black' }}
-            >
-              {page}
-            </Button>
-          ))}
-        </Box> */}
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
