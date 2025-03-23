@@ -7,7 +7,7 @@ import Edit from './pages/Edit';
 import Post from './pages/Detail';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Test from './pages/Test';
+import Test from './components/UserList';
 import Lending from './pages/Lending';
 // import Guestbook from './pages/Guestbook';
 
