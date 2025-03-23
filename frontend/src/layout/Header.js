@@ -7,8 +7,9 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, 
 import HeaderDrawer from '../components/HeaderDrawer';
 import { jwtDecode } from "jwt-decode";
 
-const pages = ['Create', 'Guestbook', 'Home', 'Login'];
+const pages = ['Guestbook', 'Home', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const afterLoginPages = ['Create', 'Home', 'Mypage'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -21,6 +22,7 @@ function Header() {
       try {
         const decoded = jwtDecode(token);
         setUser(decoded);
+        console.log("jwt 토큰 가져오기 성공!");
       } catch (error) {
         console.error("토큰 디코딩 오류:", error);
       }
@@ -121,9 +123,11 @@ function Header() {
           >
             Sangmin's Blog
           </Typography>
-          
+
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {pages.map((page) => (
+            {user ? (afterLoginPages.map((afterLoginPage) => {
+              <Button>${afterLoginPage}</Button>
+            })) : (pages.map((page) => (
               page === "Login" ? (
                 <Link key={page} to="/login" style={{ textDecoration: 'none' }}>
                   <Button
@@ -162,7 +166,7 @@ function Header() {
                 </Button>
               )
               )))
-            ))}
+            )))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
