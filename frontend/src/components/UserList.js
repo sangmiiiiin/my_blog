@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../redux/userSlice";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "../redux/store";
 
 const UserList = () => {
     const dispatch = useDispatch();
@@ -14,14 +16,16 @@ const UserList = () => {
     if (error) return <p>에러 발생: {error}</p>;
 
     return (
-        <div>
-            <h2>사용자 목록</h2>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>{user.name}</li>
-                ))}
-            </ul>
-        </div>
+        <PersistGate loading={<p>로딩 중...</p>} persistor={persistor}>
+            <div>
+                <h2>사용자 목록</h2>
+                <ul>
+                    {users.map((user) => (
+                        <li key={user.id}>{user.name}</li>
+                    ))}
+                </ul>
+            </div>
+        </PersistGate>
     );
 };
 
