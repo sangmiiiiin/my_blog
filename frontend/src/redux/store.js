@@ -1,6 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import counterReducr from "./counterSlice";
+import userReducer from "./userSlice";
 
 export const store = configureStore({
-    reducer: {}, // 리듀서를 여기에 추가할 예정
+    reducer: {
+        counter: counterReducr, // counter 상태 추가
+        users: userReducer,
+    },
 });
 
