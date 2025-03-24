@@ -12,7 +12,10 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5700/auth/login", { email, password });
+            const response = await axios.post("http://localhost:5700/auth/login",
+                { email, password },
+                { withCredentials: true } // 쿠키 포함
+            );
             console.log("로그인 성공! 토큰: ", response.data.token); // 콘솔에 출력
             alert("로그인 성공!");
             navigate("/");
@@ -51,12 +54,12 @@ const Login = () => {
                                 required
                             />
                             <Box display="flex" justifyContent="center">
-                            <Button type="submit" variant="contained" color="primary"  sx={{ mt: 2, width: "10vw", mr: 2 }}>
-                                로그인
-                            </Button>
-                            <Button href="/register" type="button" variant="contained" color="success" sx={{ mt: 2, width: "10vw"}}>
-                                회원가입
-                            </Button>
+                                <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, width: "10vw", mr: 2 }}>
+                                    로그인
+                                </Button>
+                                <Button href="/register" type="button" variant="contained" color="success" sx={{ mt: 2, width: "10vw" }}>
+                                    회원가입
+                                </Button>
                             </Box>
 
                         </form>

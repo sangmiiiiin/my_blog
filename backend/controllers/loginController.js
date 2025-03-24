@@ -27,7 +27,18 @@ const loginUser = async (req, res) => {
             { expiresIn: "1h" }
         );
 
-        res.json({ message: "로그인 성공!", token, user: { id: user._id, username: user.username, email: user.email } });
+        // 4️⃣ HttpOnly 쿠키로 JWT 저장
+        res.cookie("token", token, {
+            httpOnly: true, // JavaScript에서 접근 불가
+            secure: true,   // HTTPS에서만 전송 (개발 환경에서는 false 가능)
+            sameSite: "Strict", // CSRF 방지
+            maxAge: 60 * 60 * 1000 // 1시간 (밀리초 단위)
+        });
+
+        res.json({ 
+            message: "로그인 성공!", 
+            user: { id: user._id, username: user.username, email: user.email } 
+        });
     } catch (error) {
         console.error("로그인 오류:", error);
         res.status(500).json({ message: "서버 오류 발생" });
