@@ -5,13 +5,20 @@ const path = require("path");
 
 const connectToDatabase = require("./config/db");
 const routes = require("./routes/index");
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 connectToDatabase();  // MongoDB 연결
 
 const app = express();
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:3000", // 프론트엔드 주소
+        credentials: true, // 쿠키 포함 허용
+    })
+);
 app.use(express.json());
+app.use(cookieParser());
 
 // ✅ 라우트 통합 적용
 app.use("/", routes); 
