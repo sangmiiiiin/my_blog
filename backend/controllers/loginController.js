@@ -37,6 +37,7 @@ const loginUser = async (req, res) => {
 
         res.json({ 
             message: "로그인 성공!", 
+            token,
             user: { id: user._id, username: user.username, email: user.email } 
         });
     } catch (error) {
