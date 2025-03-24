@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { checkAuth, logout } from '../redux/authSlice';
+import axios from 'axios';
 // import { HeaderContainer, Logo, NavList, NavLink } from '../styles/HeaderStyles';  // 스타일 임포트
 
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 
 import HeaderDrawer from '../components/HeaderDrawer';
-import { jwtDecode } from "jwt-decode";
 
 const pages = ['Guestbook', 'Home', 'Login'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const afterLoginPages = ['Create', 'Home', 'Mypage'];
+const afterLoginPages = ['Home','Create', 'Logout', 'MyPage'];
+const settings = ['Register', 'Login'];
+const afterLoginSettings = ['MyPage', 'Logout'];
+
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [user, setUser] = useState(null);
+
+  const dispatch = useDispatch();
+  const { isAuthenticated, user, loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setUser(decoded);
-        console.log("jwt 토큰 가져오기 성공!");
-      } catch (error) {
-        console.error("토큰 디코딩 오류:", error);
-      }
+    dispatch(checkAuth()); // 앱이 실행되면 로그인 상태 확인
+  }, [dispatch]);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post("/auth/logout");
+      dispatch(logout());
+    } catch (error) {
+      console.error("로그아웃 실패:", error.response?.data || error.message);
     }
-  }, []);
+  };
+
+  if (loading) return <p>로딩중...</p>;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -43,10 +51,7 @@ function Header() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-  }
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#333' }}>
       <Container maxWidth="xl">
@@ -125,7 +130,7 @@ function Header() {
           </Typography>
 
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {user ? (afterLoginPages.map((afterLoginPage) => {
+            {isAuthenticated ? (afterLoginPages.map((afterLoginPage) => {
               <Button>${afterLoginPage}</Button>
             })) : (pages.map((page) => (
               page === "Login" ? (
