@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { checkAuth, logout } from '../redux/authSlice';
@@ -10,9 +10,9 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, 
 import HeaderDrawer from '../components/HeaderDrawer';
 
 const pages = ['Guestbook', 'Home', 'Login'];
-const afterLoginPages = ['Home','Create', 'Logout', 'MyPage'];
+const afterLoginPages = ['Home', 'Create', 'Logout', 'MyPage'];
 const settings = ['Register', 'Login'];
-const afterLoginSettings = ['MyPage', 'Logout'];
+// const afterLoginSettings = ['MyPage', 'Logout'];
 
 
 function Header() {
@@ -20,7 +20,7 @@ function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const dispatch = useDispatch();
-  const { isAuthenticated, user, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated, /*user*/ loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(checkAuth()); // 앱이 실행되면 로그인 상태 확인
@@ -50,6 +50,38 @@ function Header() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const renderNavButton = (label, path, onClick) => (
+    <Link key={label} to={path} style={{ textDecoration: 'none' }}>
+      <Button onClick={onClick} sx={{ my: 2, color: 'white' }}>
+        {label}
+      </Button>
+    </Link>
+  );
+
+  const renderButtons = (items, isAuthenticated) => {
+    return items.map((item) => {
+      if (item === "Logout") {
+        return (
+          <Button key={item} onClick={handleLogout} sx={{ my: 2, color: 'white' }}>
+            {item}
+          </Button>
+        );
+      }
+
+      const routes = {
+        "Create": "/create",
+        "Home": "/",
+        "Login": "/login"
+      };
+
+      return routes[item] ? renderNavButton(item, routes[item], handleCloseNavMenu) : (
+        <Button key={item} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white' }}>
+          {item}
+        </Button>
+      );
+    });
   };
 
   return (
@@ -130,60 +162,7 @@ function Header() {
           </Typography>
 
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
-            {isAuthenticated ? (afterLoginPages.map((afterLoginPage) => {
-              return(
-                afterLoginPage === "Logout" ? (
-                  <Link key={afterLoginPage} style={{ textDecoration: 'none' }}>
-                    <Button
-                      onClick={handleLogout} 
-                      sx={{ my: 2, color: 'white', display: 'black' }}
-                    >
-                      {afterLoginPage}
-                    </Button>
-                  </Link>
-                ) : ((afterLoginPage === "Create"))
-                // <Button>{afterLoginPage}</Button>
-              );
-            })) : (pages.map((page) => (
-              page === "Login" ? (
-                <Link key={page} to="/login" style={{ textDecoration: 'none' }}>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'black' }}
-                  >
-                    {page}
-                  </Button>
-                </Link>
-              ) : ((page === "Home" ? (
-                <Link key={page} to="/" style={{ textDecoration: 'none ' }}>
-                  <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'black' }}
-                  >
-                    {page}
-                  </Button>
-                </Link>
-              ) : ((page === "Create" ? (
-                <Link key={page} to="/create" style={{ textDecoration: 'none ' }}>
-                  <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'black' }}
-                  >
-                    {page}
-                  </Button>
-                </Link> ) :
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'black' }}
-                >
-                  {page}
-                </Button>
-              )
-              )))
-            )))}
+            {isAuthenticated ? renderButtons(afterLoginPages, true) : renderButtons(pages, false)}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
