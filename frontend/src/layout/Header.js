@@ -131,7 +131,9 @@ function Header() {
 
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {isAuthenticated ? (afterLoginPages.map((afterLoginPage) => {
-              <Button>${afterLoginPage}</Button>
+              return(
+                <Button>{afterLoginPage}</Button>
+              );
             })) : (pages.map((page) => (
               page === "Login" ? (
                 <Link key={page} to="/login" style={{ textDecoration: 'none' }}>
