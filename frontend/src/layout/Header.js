@@ -28,7 +28,7 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/auth/logout");
+      await axios.post("http://localhost:5700/auth/logout");
       dispatch(logout());
     } catch (error) {
       console.error("로그아웃 실패:", error.response?.data || error.message);
@@ -132,7 +132,17 @@ function Header() {
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {isAuthenticated ? (afterLoginPages.map((afterLoginPage) => {
               return(
-                <Button>{afterLoginPage}</Button>
+                afterLoginPage === "Logout" ? (
+                  <Link key={afterLoginPage} style={{ textDecoration: 'none' }}>
+                    <Button
+                      onClick={handleLogout} 
+                      sx={{ my: 2, color: 'white', display: 'black' }}
+                    >
+                      {afterLoginPage}
+                    </Button>
+                  </Link>
+                ) : ((afterLoginPage === "Create"))
+                // <Button>{afterLoginPage}</Button>
               );
             })) : (pages.map((page) => (
               page === "Login" ? (
