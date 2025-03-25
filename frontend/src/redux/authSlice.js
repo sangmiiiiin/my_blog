@@ -4,7 +4,7 @@ import axios from "axios";
 // ✅ 비동기 로그인 상태 확인 (쿠키 기반)
 export const checkAuth = createAsyncThunk("auth/checkAuth", async (_, thunkAPI) => {
     try {
-        const res = await axios.get("http://localhost:5700/auth/check");
+        const res = await axios.get("http://localhost:5700/auth/check", { withCredentials: true });
         return res.data; // { isAuthenticated: true, user: { ... } }
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response?.data || "로그인 확인 실패");
