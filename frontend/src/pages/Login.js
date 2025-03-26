@@ -1,13 +1,16 @@
 // frontend/src/pages/Login.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../redux/authSlice";
+import { useNavigate } from "react-router-dom";
 import { Box, Button, Card, CardContent, Paper, TextField, Typography } from "@mui/material";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,9 +19,12 @@ const Login = () => {
                 { email, password },
                 { withCredentials: true } // 쿠키 포함
             );
-            console.log("로그인 성공! 토큰: ", response.data.token); // 콘솔에 출력
-            alert("로그인 성공!");
-            navigate("/");
+            if (response.status === 200) {
+                dispatch(loginSuccess(response.data.user)); // Redux 상태 업데이트
+                console.log("로그인 성공! 토큰: ", response.data.token); // 콘솔에 출력
+                alert("로그인 성공!");
+                navigate("/main"); // 메인 페이지 이동
+            }
         } catch (error) {
             console.error("로그인 오류:", error.response ? error.response.data : error);
             alert("로그인 실패! 이메일 또는 비밀번호를 확인하세요.");
