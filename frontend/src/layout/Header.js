@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { checkAuth, logout } from '../redux/authSlice';
 import axios from 'axios';
+
 // import { HeaderContainer, Logo, NavList, NavLink } from '../styles/HeaderStyles';  // 스타일 임포트
 
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
-
 import HeaderDrawer from '../components/HeaderDrawer';
 
 const pages = ['Guestbook', 'Home', 'Login'];
@@ -20,6 +20,8 @@ function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { isAuthenticated, /*user*/ loading } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -28,8 +30,11 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5700/auth/logout");
+      await axios.post("http://localhost:5700/auth/logout", {}, { withCredentials: true });
       dispatch(logout());
+      alert("로그아웃 되었습니다.");
+      console.log("로그아웃 성공");
+      navigate("/main");
     } catch (error) {
       console.error("로그아웃 실패:", error.response?.data || error.message);
     }
