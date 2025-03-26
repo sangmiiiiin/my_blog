@@ -20,6 +20,10 @@ const authSlice = createSlice({
         error: null,
     },
     reducers: {
+        loginSuccess: (state, action) => {
+            state.isAuthenticated = true;
+            state.user = action.payload;    // 사용자 정보 저장
+        },
         logout: (state) => {
             state.isAuthenticated = false;
             state.user = null;
@@ -44,5 +48,5 @@ const authSlice = createSlice({
     },
 });
 
-export const { logout } = authSlice.actions;
+export const { loginSuccess, logout } = authSlice.actions;
 export default authSlice.reducer;
