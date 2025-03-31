@@ -114,7 +114,7 @@ function Header() {
               textDecoration: 'none',
             }}
           >
-            Sangmin's Blog
+            Sangmin's Mall
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
