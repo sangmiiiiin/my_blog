@@ -5,6 +5,7 @@ const ItemOrder = () => {
     return (
         <Box
             border="1px solid lightgray"
+            borderRadius="6px"
             sx={{ height: "auto" }}
             display="flex"
             justifyContent="space-between"
@@ -17,7 +18,7 @@ const ItemOrder = () => {
                     flexDirection: "column",
                     alignItems: "center",
                     height: "100%",
-                    gap: 1
+                    gap: 1,
                  }}
             >
                 <Typography>소비자가</Typography>
