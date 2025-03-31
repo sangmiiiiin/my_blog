@@ -4,15 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { checkAuth, logout } from '../redux/authSlice';
 import axios from 'axios';
 
-// import { HeaderContainer, Logo, NavList, NavLink } from '../styles/HeaderStyles';  // 스타일 임포트
-
 import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem } from '@mui/material';
 import HeaderDrawer from '../components/HeaderDrawer';
 
 const pages = ['Guestbook', 'Home', 'Login'];
-const afterLoginPages = ['Home', 'Create', 'Logout', 'MyPage'];
+const afterLoginPages = ['Home', 'Create', 'Logout', 'Mypage'];
 const settings = ['Register', 'Login'];
-// const afterLoginSettings = ['MyPage', 'Logout'];
 
 
 function Header() {
@@ -73,6 +70,14 @@ function Header() {
             {item}
           </Button>
         );
+      } else if (item === "Mypage") {
+        return (
+          <Link to={"/mypage"}>
+            <Button key={item} sx={{ my: 2, color: 'white' }}>
+              {item}
+            </Button>
+          </Link>
+        )
       }
 
       const routes = {
