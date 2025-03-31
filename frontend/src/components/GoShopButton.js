@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 export default function GoShopButton() {
   return (
-      <Button variant="contained" href="/main" color="">
+      <Button variant="contained" href="/main" color="info">
         Go shopping!
       </Button>
   );

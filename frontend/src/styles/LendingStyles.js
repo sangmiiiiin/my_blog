@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import backgroundImg from "../image/background.jpg";
+import backgroundImg from "../image/background2.jpg";
 
 const fadeInDown = keyframes`
     from {
