@@ -5,10 +5,6 @@ import { Alert, Box, Snackbar } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import axios from "axios";
-// import Calender from '../components/Calender';
-
-// import BannerImage from '../image/Banner_img1.png';
-import CarouselRatio from '../components/MobileCarousel';
 import Carousel from '../components/Carousel';
 
 
@@ -83,7 +79,6 @@ const Main = () => {
 
     return (
         <>
-            <CarouselRatio />
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={post} autoHideDuration={3000} onClose={() => setPost(false)}>
                 <Alert onClose={() => setPost(false)} severity="success" variant="filled">
                     글이 성공적으로 작성되었습니다!
@@ -104,16 +99,16 @@ const Main = () => {
                     display: { xs: 'block', md: 'flex' },
                 }}
             >
-                {/* <BannerBox>
-                    <BannerImg src={BannerImage} />
-                </BannerBox> */}
                 <Carousel />
-                {/* <Calender /> */}
             </Box>
 
             <CardContainer>
                 {posts.map(post => (
-                    <Card key={post.id} onClick={() => navigate(`/posts/${post._id}`)}>
+                    <Card 
+                        key={post.id} 
+                        style={{ backgroundColor: "white" }}
+                        onClick={() => navigate(`/posts/${post._id}`)}
+                    >
                         <Thumbnail src={post.thumbnail} alt={post.title} />
                         <CardContent>
                             <Title>{post.title}</Title>

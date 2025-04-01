@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Card, CardMedia, CardContent, Typography, Button, Box, Paper } from "@mui/material";
 import ItemOrder from "../components/ItemOrder";
+import CarouselRatio from '../components/MobileCarousel';
 
 const Detail = () => {
     const { id } = useParams();
@@ -33,7 +34,6 @@ const Detail = () => {
             justifyContent="center"
             alignItems="center"
             minHeight="100vh"
-            border="3px solid red"
         >
             <Paper elevation={3} sx={{ marginTop: 4, padding: 4, width: "100%", maxWidth: 500 }}>
                 <Card
@@ -65,6 +65,7 @@ const Detail = () => {
                     </CardContent>
                 </Card>
                 <ItemOrder />
+                <CarouselRatio />
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
                     <Button variant="contained" color="error" onClick={handleDelete}>삭제</Button>

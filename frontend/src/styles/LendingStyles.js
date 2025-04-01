@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import backgroundImg from "../image/background2.jpg";
 
 const fadeInDown = keyframes`
     from {
@@ -13,9 +12,7 @@ const fadeInDown = keyframes`
 `
 
 export const Background = styled.header`
-    background: url(${backgroundImg});
-    background-size: cover;
-    background-position: center;
+    background-color: #000000;
     height: 100vh;
     max-height: 100vh;
 
@@ -80,7 +77,8 @@ export const SocialLinkItems = styled.div`
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 1vh;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
 `;
 
 export const Github = styled.img`
@@ -106,6 +104,7 @@ export const Velog = styled.img`
 `
 
 export const Name = styled.h1`
+    color: #FFFFFF;
     font-family: 'Racing Sans One', cursive;
     font-size: 4.5em;
     animation: ${fadeInDown} 3s ease-in-out;
@@ -117,6 +116,8 @@ export const Name = styled.h1`
 `
 
 export const Position = styled.p`
+    color: #FFFFFF;
+    font-family: 'Racing Sans One', cursive;
     font-size: 1.7em;
     animation: ${fadeInDown} 1s ease-in-out;
 

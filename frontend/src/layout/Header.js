@@ -56,7 +56,7 @@ function Header() {
 
   const renderNavButton = (label, path, onClick) => (
     <Link key={label} to={path} style={{ textDecoration: 'none' }}>
-      <Button onClick={onClick} sx={{ my: 2, color: 'white' }}>
+      <Button onClick={onClick} sx={{ my: 2, color: 'black' }}>
         {label}
       </Button>
     </Link>
@@ -66,14 +66,14 @@ function Header() {
     return items.map((item) => {
       if (item === "Logout") {
         return (
-          <Button key={item} onClick={handleLogout} sx={{ my: 2, color: 'white' }}>
+          <Button key={item} onClick={handleLogout} sx={{ my: 2, color: 'black' }}>
             {item}
           </Button>
         );
       } else if (item === "Mypage") {
         return (
           <Link to={"/mypage"}>
-            <Button key={item} sx={{ my: 2, color: 'white' }}>
+            <Button key={item} sx={{ my: 2, color: 'black' }}>
               {item}
             </Button>
           </Link>
@@ -87,7 +87,7 @@ function Header() {
       };
 
       return routes[item] ? renderNavButton(item, routes[item], handleCloseNavMenu) : (
-        <Button key={item} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'white' }}>
+        <Button key={item} onClick={handleCloseNavMenu} sx={{ my: 2, color: 'black' }}>
           {item}
         </Button>
       );
@@ -95,7 +95,7 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#333' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <HeaderDrawer />
@@ -110,11 +110,11 @@ function Header() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
             }}
           >
-            Sangmin's Mall
+            Climbing Apparel
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -164,11 +164,12 @@ function Header() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '0.1rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
+              marginRight: '5vw'
             }}
           >
-            Sangmin's Blog
+            Climbing Apparel
           </Typography>
 
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
@@ -177,7 +178,7 @@ function Header() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, color: "black" }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
