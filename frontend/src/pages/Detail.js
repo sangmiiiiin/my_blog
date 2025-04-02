@@ -5,6 +5,7 @@ import axios from "axios";
 import { Card, CardMedia, CardContent, Typography, Button, Box, Paper } from "@mui/material";
 import ItemOrder from "../components/ItemOrder";
 import CarouselRatio from '../components/MobileCarousel';
+import SizeSelect from "../components/SizeSelect";
 
 const Detail = () => {
     const { id } = useParams();
@@ -65,6 +66,7 @@ const Detail = () => {
                     </CardContent>
                 </Card>
                 <ItemOrder />
+                <SizeSelect />
                 <CarouselRatio />
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>

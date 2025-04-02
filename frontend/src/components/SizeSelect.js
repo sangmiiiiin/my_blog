@@ -5,7 +5,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function SelectLabels() {
+export default function SizeSelect() {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
