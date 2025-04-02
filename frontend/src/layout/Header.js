@@ -99,24 +99,7 @@ function Header() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <HeaderDrawer />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            Climbing Apparel
-          </Typography>
-
+          {/* 모바일 화면 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="medium"
@@ -126,7 +109,6 @@ function Header() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              {/* <MenuIcon /> */}
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -171,7 +153,25 @@ function Header() {
           >
             Climbing Apparel
           </Typography>
-
+          
+          {/* 데스크탑 화면 */}
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'black',
+              textDecoration: 'none',
+            }}
+          >
+            Climbing Apparel
+          </Typography>
           <Box sx={{ mr: 2, flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {isAuthenticated ? renderButtons(afterLoginPages, true) : renderButtons(pages, false)}
           </Box>
