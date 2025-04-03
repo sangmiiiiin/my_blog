@@ -2,15 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Card, CardMedia, CardContent, Typography, Button, Box, Paper } from "@mui/material";
-import ItemOrder from "../components/ItemOrder";
+import { Card, CardMedia, CardContent, Typography, Button, Box, Paper, Divider } from "@mui/material";
 import CarouselRatio from '../components/MobileCarousel';
-import SizeSelect from "../components/SizeSelect";
+import OptionSelect from "../components/Select";
+import Price from "../components/Price";
 
 const Detail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
+    const originalPrice = "79,000";
+    const discountedPrice = "49,800";
 
     useEffect(() => {
         axios.get(`http://localhost:5700/posts/${id}`)
@@ -53,21 +55,34 @@ const Detail = () => {
                         sx={{
                             objectFit: "cover",
                             height: "auto",
-                            width: "100%"
+                            width: "100%",
+                            mb: 5,
                         }}
                     />
+                    <Typography textAlign="center" fontFamily="monospace">
+                        BEST CORDINATION
+                    </Typography>
+                    <CarouselRatio />
                     <CardContent>
-                        <Typography variant="h4" gutterBottom>
+                        <Typography variant="h6">
                             {post.title}
                         </Typography>
-                        <Typography variant="body1" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary">
                             {post.content}
                         </Typography>
                     </CardContent>
                 </Card>
-                <ItemOrder />
-                <SizeSelect />
-                <CarouselRatio />
+                <Box display="flex" justifyContent="center">
+                    <Divider
+                        sx={{
+                            my: 1,
+                            width: "90vw",
+                        }}
+                    />
+                </Box>
+                <Price originalPrice={originalPrice} discountedPrice={discountedPrice} />
+                <OptionSelect />
+
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
                     <Button variant="contained" color="error" onClick={handleDelete}>삭제</Button>
