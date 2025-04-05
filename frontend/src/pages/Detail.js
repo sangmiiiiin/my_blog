@@ -6,6 +6,7 @@ import { Card, CardMedia, CardContent, Typography, Button, Box, Paper, Divider }
 import CarouselRatio from '../components/MobileCarousel';
 import OptionSelect from "../components/Select";
 import Price from "../components/Price";
+import OrderBox from "../components/OrderBox";
 
 const Detail = () => {
     const { id } = useParams();
@@ -76,12 +77,24 @@ const Detail = () => {
                     <Divider
                         sx={{
                             my: 1,
-                            width: "90vw",
+                            width: "90%",
                         }}
                     />
                 </Box>
+
                 <Price originalPrice={originalPrice} discountedPrice={discountedPrice} />
                 <OptionSelect />
+
+                <Box display="flex" justifyContent="center">
+                    <Divider
+                        sx={{
+                            my: 1,
+                            width: "90%",
+                        }}
+                    />
+                </Box>
+
+                <OrderBox />
 
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
