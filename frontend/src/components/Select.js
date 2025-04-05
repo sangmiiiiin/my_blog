@@ -17,7 +17,7 @@ const SizeSelect = () => {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 360 }}>
-        <InputLabel id="Size Selector">Size</InputLabel>
+        <InputLabel id="Size Selector" sx={{ lineHeight: 0.75 }}>Size</InputLabel>
         <Select
           labelId="Size Selector"
           id="Size Selector"
@@ -53,7 +53,7 @@ const ColorSelect = () => {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 360 }}>
-        <InputLabel id="Color Selector">Color</InputLabel>
+        <InputLabel id="Color Selector" sx={{ lineHeight: 0.75 }}>Color</InputLabel>
         <Select
           id="Color Selector"
           labelId="Color Selector"

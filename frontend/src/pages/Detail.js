@@ -76,7 +76,7 @@ const Detail = () => {
                     <Divider
                         sx={{
                             my: 1,
-                            width: "90vw",
+                            width: "100%",
                         }}
                     />
                 </Box>
