@@ -51,7 +51,6 @@ const ColorSelect = () => {
   const colorList = ["Black", "Navy", "Pink"];
 
   return (
-    <div>
       <FormControl sx={{ m: 1, minWidth: 360 }}>
         <InputLabel id="Color Selector" sx={{ lineHeight: 0.75 }}>Color</InputLabel>
         <Select
@@ -73,7 +72,6 @@ const ColorSelect = () => {
           <MenuItem value={colorList[2]}>Pink</MenuItem>
         </Select>
       </FormControl>
-    </div>
   );
 }
 
