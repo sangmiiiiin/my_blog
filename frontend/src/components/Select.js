@@ -15,8 +15,7 @@ const SizeSelect = () => {
   const sizelist = ["S", "M", "L"]
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, minWidth: 360 }}>
+      <FormControl sx={{ m: "auto", minWidth: 360 }}>
         <InputLabel id="Size Selector" sx={{ lineHeight: 0.75 }}>Size</InputLabel>
         <Select
           labelId="Size Selector"
@@ -37,7 +36,6 @@ const SizeSelect = () => {
           <MenuItem value={sizelist[2]}>L</MenuItem>
         </Select>
       </FormControl>
-    </div>
   );
 }
 
@@ -51,7 +49,7 @@ const ColorSelect = () => {
   const colorList = ["Black", "Navy", "Pink"];
 
   return (
-      <FormControl sx={{ m: 1, minWidth: 360 }}>
+      <FormControl sx={{ m: "auto", minWidth: 360 }}>
         <InputLabel id="Color Selector" sx={{ lineHeight: 0.75 }}>Color</InputLabel>
         <Select
           id="Color Selector"
@@ -78,6 +76,9 @@ const ColorSelect = () => {
 export default function OptionSelect() {
   return (
     <Box 
+      display="flex"
+      flexDirection="column"
+      gap={1}
       sx={{
         mt: 2,
       }}
