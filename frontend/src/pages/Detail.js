@@ -7,6 +7,7 @@ import CarouselRatio from '../components/MobileCarousel';
 import OptionSelect from "../components/Select";
 import Price from "../components/Price";
 import OrderBox from "../components/OrderBox";
+import DetailSection from "../components/DetailSection";
 
 const Detail = () => {
     const { id } = useParams();
@@ -95,6 +96,8 @@ const Detail = () => {
                 </Box>
 
                 <OrderBox />
+
+                <DetailSection />
 
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
