@@ -13,6 +13,12 @@ const Detail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
+    const detailInformation = {
+        originalPrice: 100000,
+        discountedPrice: 49800,
+        deliveryFee: 3000,
+    }
+
     const originalPrice = "79,000";
     const discountedPrice = "49,800";
 
@@ -83,8 +89,8 @@ const Detail = () => {
                     />
                 </Box>
 
-                <Price originalPrice={originalPrice} discountedPrice={discountedPrice} />
-                <OptionSelect />
+                <Price originalPrice={originalPrice} discountedPrice={discountedPrice} deliveryFee={detailInformation.deliveryFee} />
+                <OptionSelect clothesSize={detailInformation.size} clothesColor={detailInformation.color}/>
 
                 <Box display="flex" justifyContent="center">
                     <Divider
