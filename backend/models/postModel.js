@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const postSchema = new mongoose.Schema({
     title: String,
     content: String,
+    originalPrice: Number,
+    salePrice: Number,
+    detailContent: String,
     thumbnail: String,
     description: String,
     link: String,
