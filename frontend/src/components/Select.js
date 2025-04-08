@@ -7,12 +7,11 @@ import { Box } from '@mui/material';
 
 const SizeSelect = () => {
   const [size, setSize] = React.useState('');
+  const clothesSize = ['S', 'M', 'L'];
 
   const handleChange = (event) => {
     setSize(event.target.value);
   };
-
-  const sizelist = ["S", "M", "L"]
 
   return (
       <FormControl sx={{ m: "auto", minWidth: 360 }}>
@@ -31,9 +30,9 @@ const SizeSelect = () => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={sizelist[0]}>S</MenuItem>
-          <MenuItem value={sizelist[1]}>M</MenuItem>
-          <MenuItem value={sizelist[2]}>L</MenuItem>
+          <MenuItem>{clothesSize[0]}</MenuItem>
+          <MenuItem>{clothesSize[1]}</MenuItem>
+          <MenuItem>{clothesSize[2]}</MenuItem>
         </Select>
       </FormControl>
   );
@@ -41,12 +40,12 @@ const SizeSelect = () => {
 
 const ColorSelect = () => {
   const [color, setColor] = React.useState('');
+  const clothesColor = ["black", "white", "pink"];
 
   const handleColorChange = (event) => {
     setColor(event.target.value);
   };
 
-  const colorList = ["Black", "Navy", "Pink"];
 
   return (
       <FormControl sx={{ m: "auto", minWidth: 360 }}>
@@ -65,9 +64,9 @@ const ColorSelect = () => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={colorList[0]}>Black</MenuItem>
-          <MenuItem value={colorList[1]}>Navy</MenuItem>
-          <MenuItem value={colorList[2]}>Pink</MenuItem>
+          <MenuItem>{clothesColor[0]}</MenuItem>
+          <MenuItem>{clothesColor[1]}</MenuItem>
+          <MenuItem>{clothesColor[2]}</MenuItem>
         </Select>
       </FormControl>
   );

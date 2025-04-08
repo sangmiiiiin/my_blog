@@ -35,6 +35,7 @@ export default function TemporaryDrawer() {
               onClick={() => {
                 text === "새 글 작성" && handleNavigate("/create");
                 text === "회원가입" && handleNavigate("/register");
+                text === "로그인" && handleNavigate("/login");
               }}
             >
               <ListItemIcon>

@@ -47,16 +47,16 @@ const ThreeButton = () => {
         <Box display="flex" justifyContent="center" sx={{ mt: 0.5 }} gap={0.8}>
             <Button
                 variant="outlined"
-                sx={{ width: "29%" }}
+                sx={{ width: "29%", color: "black", borderColor: "black" }}
             >
                 CART
             </Button>
-            <Button variant="outlined" sx={{ width: "29%" }}>
+            <Button variant="outlined" sx={{ width: "29%", color: "black", borderColor: "black" }}>
                 <Typography fontSize="0.7rem">
                     WISH LIST
                 </Typography>
             </Button>
-            <Button variant="outlined" sx={{ width: "29%" }}>
+            <Button variant="outlined" sx={{ width: "29%", color: "black", borderColor: "black" }}>
                 <ShareIcon />
                 SHARE
             </Button>

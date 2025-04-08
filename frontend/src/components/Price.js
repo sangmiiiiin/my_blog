@@ -1,7 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import { CustomButton } from "../styles/CustomButton";
 
-function Price({ originalPrice, discountedPrice }) {
+function Price({ originalPrice, discountedPrice, deliveryFee }) {
     return (
         <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
             {/* 기존 가격 (취소선 적용) */}
@@ -45,7 +45,7 @@ function Price({ originalPrice, discountedPrice }) {
                             fontFamily: "unset",
                             ml: 5,
                         }}>
-                        3,000원(60,000원 이상 구매시 무료)
+                        ₩{deliveryFee.toLocaleString()}(60,000원 이상 구매시 무료)
                     </Typography>
                 </Box>
                 <Box display="flex">

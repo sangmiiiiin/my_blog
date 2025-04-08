@@ -7,13 +7,17 @@ import CarouselRatio from '../components/MobileCarousel';
 import OptionSelect from "../components/Select";
 import Price from "../components/Price";
 import OrderBox from "../components/OrderBox";
+import DetailSection from "../components/DetailSection";
 
 const Detail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
-    const originalPrice = "79,000";
-    const discountedPrice = "49,800";
+    const detailInformation = {
+        originalPrice: 100000,
+        salePrice: 49800,
+        deliveryFee: 3000,
+    }
 
     useEffect(() => {
         axios.get(`http://localhost:5700/posts/${id}`)
@@ -82,8 +86,8 @@ const Detail = () => {
                     />
                 </Box>
 
-                <Price originalPrice={originalPrice} discountedPrice={discountedPrice} />
-                <OptionSelect />
+                <Price originalPrice={post.originalPrice} discountedPrice={post.salePrice} deliveryFee={detailInformation.deliveryFee} />
+                <OptionSelect clothesSize={detailInformation.size} clothesColor={detailInformation.color}/>
 
                 <Box display="flex" justifyContent="center">
                     <Divider
@@ -95,6 +99,8 @@ const Detail = () => {
                 </Box>
 
                 <OrderBox />
+
+                <DetailSection detailContent={post.detailContent}/>
 
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
