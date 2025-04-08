@@ -7,6 +7,9 @@ import { Box, Button, Card, CardContent, Paper, TextField, Typography } from "@m
 const Create = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    const [originalPrice, setOriginalPrice] = useState(null);
+    const [salePrice, setSalePrice] = useState(null);
+    const [detailContent, setDetailContent] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [thumbnail, setThumbnail] = useState(null);
     const navigate = useNavigate();
@@ -41,11 +44,14 @@ const Create = () => {
         }
         // 2️⃣ 글 저장
         try {
-            await axios.post("http://localhost:5700/posts", { 
-                title, 
+            await axios.post("http://localhost:5700/posts", {
+                title,
                 content,
+                originalPrice,
+                salePrice,
+                detailContent,
                 thumbnail: imageUrl, // 업로드된 이미지 URL 저장
-             });
+            });
             navigate("/", { state: { success: true } });
         } catch (error) {
             console.error("글 작성 오류:", error);
@@ -70,17 +76,43 @@ const Create = () => {
                                 margin="normal"
                             />
                             <TextField
-                                label="내용"
+                                label="간단설명"
                                 variant="outlined"
                                 fullWidth
                                 multiline
-                                rows={6}
+                                rows={2}
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                                 margin="normal"
                             />
+                            <TextField
+                                label="원래가격"
+                                variant="outlined"
+                                fullWidth
+                                value={originalPrice}
+                                onChange={(e) => setOriginalPrice(e.target.value)}
+                                margin="normal"
+                            />
+                            <TextField
+                                label="할인가격"
+                                variant="outlined"
+                                fullWidth
+                                value={salePrice}
+                                onChange={(e) => setSalePrice(e.target.value)}
+                                margin="normal"
+                            />
+                            <TextField
+                                label="상세설명"
+                                variant="outlined"
+                                fullWidth
+                                multiline
+                                value={detailContent}
+                                rows={5}
+                                onChange={(e) => setDetailContent(e.target.value)}
+                                margin="normal"
+                            />
                             <input type="file" accept="image/*" onChange={handleImageChange} />
-                            { thumbnail && <img src={thumbnail} alt="미리보기" width="100%" /> }
+                            {thumbnail && <img src={thumbnail} alt="미리보기" width="100%" />}
                             <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
                                 작성
                             </Button>

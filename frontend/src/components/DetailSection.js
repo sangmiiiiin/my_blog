@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 
-export default function DetailSection() {
+export default function DetailSection(detailContent) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -15,24 +15,7 @@ export default function DetailSection() {
         }}
       >
         <Typography variant="body2">
-          긴 상세 정보가 여기 들어갑니다. <br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-          Sed euismod, turpis at ultricies cursus, velit risus dapibus sapien, <br />
-          vitae facilisis tortor lectus non sem. <br />
-          Mauris luctus lorem ut cursus tincidunt. <br />
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          긴 상세 정보가 여기 들어갑니다. <br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-          Sed euismod, turpis at ultricies cursus, velit risus dapibus sapien, <br />
-          vitae facilisis tortor lectus non sem. <br />
-          Mauris luctus lorem ut cursus tincidunt. <br />
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          긴 상세 정보가 여기 들어갑니다. <br />
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-          Sed euismod, turpis at ultricies cursus, velit risus dapibus sapien, <br />
-          vitae facilisis tortor lectus non sem. <br />
-          Mauris luctus lorem ut cursus tincidunt. <br />
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+          {detailContent.detailContent}
         </Typography>
 
         {!isExpanded && (

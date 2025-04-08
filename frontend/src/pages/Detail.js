@@ -15,12 +15,9 @@ const Detail = () => {
     const [post, setPost] = useState(null);
     const detailInformation = {
         originalPrice: 100000,
-        discountedPrice: 49800,
+        salePrice: 49800,
         deliveryFee: 3000,
     }
-
-    const originalPrice = "79,000";
-    const discountedPrice = "49,800";
 
     useEffect(() => {
         axios.get(`http://localhost:5700/posts/${id}`)
@@ -89,7 +86,7 @@ const Detail = () => {
                     />
                 </Box>
 
-                <Price originalPrice={originalPrice} discountedPrice={discountedPrice} deliveryFee={detailInformation.deliveryFee} />
+                <Price originalPrice={post.originalPrice} discountedPrice={post.salePrice} deliveryFee={detailInformation.deliveryFee} />
                 <OptionSelect clothesSize={detailInformation.size} clothesColor={detailInformation.color}/>
 
                 <Box display="flex" justifyContent="center">
@@ -103,7 +100,7 @@ const Detail = () => {
 
                 <OrderBox />
 
-                <DetailSection />
+                <DetailSection detailContent={post.detailContent}/>
 
                 <Box display="flex" justifyContent="space-between" p={2}>
                     <Button variant="contained" color="primary" onClick={() => navigate(`/edit/${id}`)}>수정</Button>
