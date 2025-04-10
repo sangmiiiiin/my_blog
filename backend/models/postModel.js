@@ -5,6 +5,8 @@ const postSchema = new mongoose.Schema({
     content: String,
     originalPrice: Number,
     salePrice: Number,
+    size: String,
+    color: String,
     detailContent: String,
     thumbnail: String,
     description: String,
