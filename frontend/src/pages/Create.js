@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Box, Button, Card, CardContent, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Chip, MenuItem, Paper, TextField, Typography } from "@mui/material";
+
+const categoryOptions = ['의류', '기타'];
 
 
 const Create = () => {
@@ -12,7 +14,27 @@ const Create = () => {
     const [detailContent, setDetailContent] = useState("");
     const [imageFile, setImageFile] = useState(null);
     const [thumbnail, setThumbnail] = useState(null);
+    const [category, setCategory] = useState("");
+    const [sizes, setSizes] = useState([]);
+    const [colors, setColors] = useState([]);
+    const [inputSize, setInputSize] = useState("");
+    const [inputColor, setInputColor] = useState("");
+
     const navigate = useNavigate();
+
+    const handleAddSize = () => {
+        if (inputSize && !sizes.includes(inputSize)) {
+            setSizes([...sizes, inputSize]);
+            setInputSize("");
+        }
+    };
+
+    const handleAddColor = () => {
+        if (inputColor && !colors.includes(inputColor)) {
+            setColors([...colors, inputColor]);
+            setInputColor("");
+        }
+    };
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -50,9 +72,11 @@ const Create = () => {
                 originalPrice,
                 salePrice,
                 detailContent,
+                category,
+                options: category === "의류" ? { sizes, colors } : null,
                 thumbnail: imageUrl, // 업로드된 이미지 URL 저장
             });
-            navigate("/", { state: { success: true } });
+            navigate("/main", { state: { success: true } });
         } catch (error) {
             console.error("글 작성 오류:", error);
         }
@@ -101,6 +125,49 @@ const Create = () => {
                                 onChange={(e) => setSalePrice(e.target.value)}
                                 margin="normal"
                             />
+                            <TextField
+                                label="카테고리"
+                                select
+                                fullWidth
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                margin="normal"
+                            >
+                                {categoryOptions.map((c) => (
+                                    <MenuItem key={c} value={c}>
+                                        {c}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            {category === "의류" && (
+                                <>
+                                    <Box display="flex" gap={1} alignItems="center">
+                                        <TextField
+                                            label="사이즈 입력"
+                                            value={inputSize}
+                                            onChange={(e) => setInputSize(e.target.value)}
+                                        />
+                                        <Button onClick={handleAddSize}>추가</Button>
+                                    </Box>
+                                    <Box sx={{ my: 1 }}>
+                                        {sizes.map((s) => <Chip key={s} label={s} sx={{ mr: 1 }} />)}
+                                    </Box>
+
+                                    <Box display="flex" gap={1} alignItems="center">
+                                        <TextField
+                                            label="컬러 입력"
+                                            value={inputColor}
+                                            onChange={(e) => setInputColor(e.target.value)}
+                                        />
+                                        <Button onClick={handleAddColor}>추가</Button>
+                                    </Box>
+                                    <Box sx={{ my: 1 }}>
+                                        {colors.map((c) => <Chip key={c} label={c} sx={{ mr: 1 }} />)}
+                                    </Box>
+                                </>
+                            )}
+
+
                             <TextField
                                 label="상세설명"
                                 variant="outlined"
