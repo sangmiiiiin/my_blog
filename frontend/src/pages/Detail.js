@@ -91,9 +91,9 @@ const Detail = () => {
 
                 <Price originalPrice={post.originalPrice} discountedPrice={post.salePrice} deliveryFee={detailInformation.deliveryFee} />
                 {post.options?.sizes && (
-                    <FormControl sx={{ m: 1, minWidth: 360 }}>
+                    <FormControl fullWidth sx={{ m: 1, minWidth: 360 }}>
                         <InputLabel id="Size Selector" sx={{ lineHeight: 0.75 }}>Size</InputLabel>
-                        <Select label="size" fullWidth value={size} onChange={(e) => setSize(e.target.value)} sx={{ my: 0, height: 40 }}>
+                        <Select label="size" value={size} onChange={(e) => setSize(e.target.value)} sx={{ my: 0, height: 40 }}>
                             {post.options.sizes.map((s) => (
                                 <MenuItem key={s} value={s}>{s}</MenuItem>
                             ))}
@@ -101,16 +101,15 @@ const Detail = () => {
                     </FormControl>
                 )}
                 {post.options?.colors && (
-                    <FormControl sx={{ m: 1, minWidth: 360 }}>
+                    <FormControl fullWidth sx={{ m: 1, minWidth: 360 }}>
                         <InputLabel id="Size Selector" sx={{ lineHeight: 0.75 }}>Color</InputLabel>
-                        <Select label="color" fullWidth value={color} onChange={(e) => setColor(e.target.value)} sx={{ height: 40 }}>
+                        <Select label="color" value={color} onChange={(e) => setColor(e.target.value)} sx={{ height: 40 }}>
                             {post.options.colors.map((c) => (
                                 <MenuItem key={c} value={c}>{c}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
                 )}
-                {/* <OptionSelect clothesSize={detailInformation.size} clothesColor={detailInformation.color} /> */}
 
                 <Box display="flex" justifyContent="center">
                     <Divider
@@ -121,7 +120,7 @@ const Detail = () => {
                     />
                 </Box>
 
-                <OrderBox />
+                <OrderBox salePrice={post.salePrice}/>
 
                 <DetailSection detailContent={post.detailContent} />
 
