@@ -98,7 +98,7 @@ function Header() {
     <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <HeaderDrawer />
+          <HeaderDrawer isAuthenticated={isAuthenticated}/>
           {/* 모바일 화면 */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

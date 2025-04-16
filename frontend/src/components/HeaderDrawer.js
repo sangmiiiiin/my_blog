@@ -13,7 +13,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import { useNavigate } from 'react-router-dom';
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer({ isAuthenticated }) {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -25,26 +25,50 @@ export default function TemporaryDrawer() {
     navigate(path);
     setOpen(false);
   }
+  const afterLoginItems = '새 글 작성';
+  const itemList = ['로그인', '회원가입', '방명록'];
+
+  const AfterLoginRenderButtons = (text) => {
+    return (
+      <ListItem key={text} disablePadding>
+        <ListItemButton
+          onClick={() => {
+            text === "새 글 작성" && handleNavigate("/create");
+          }}
+        >
+          <ListItemIcon>
+            <MailIcon />
+          </ListItemIcon>
+          <ListItemText primary={text} />
+        </ListItemButton>
+      </ListItem>
+    )
+  }
+
+  const renderButtons = (items) => (
+    items.map((item, index) => (
+      <ListItem key={item} disablePadding>
+        <ListItemButton
+          onClick={() => {
+            item === "회원가입" && handleNavigate("/register");
+            item === "로그인" && handleNavigate("/login");
+            item === "방명록" && handleNavigate("/main");
+          }}
+        >
+          <ListItemIcon>
+            {index % 2 === 0 ? <MailIcon/> : <InboxIcon/>}
+          </ListItemIcon>
+          <ListItemText primary={item} />
+        </ListItemButton>
+      </ListItem>
+    ))
+  )
+
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
-        {['회원가입', '로그인', '새 글 작성', '방명록'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton
-              onClick={() => {
-                text === "새 글 작성" && handleNavigate("/create");
-                text === "회원가입" && handleNavigate("/register");
-                text === "로그인" && handleNavigate("/login");
-              }}
-            >
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {isAuthenticated ? AfterLoginRenderButtons(afterLoginItems) : renderButtons(itemList)}
       </List>
       <Divider />
       <List>
