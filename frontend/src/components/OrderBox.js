@@ -4,7 +4,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 
 
-const TotalPrice = () => {
+const TotalPrice = ({salePrice}) => {
     return (
         <Box display="flex" justifyContent="space-between" sx={{ width: "90%" }}>
             <Typography
@@ -19,7 +19,7 @@ const TotalPrice = () => {
                 fontWeight="bold"
                 sx={{ fontFamily: "'Noto Sans KR', sans-serif" }}
             >
-                0 원
+                {salePrice}원
             </Typography>
         </Box>
     );
@@ -66,11 +66,11 @@ const ThreeButton = () => {
 
 
 
-export default function OrderBox() {
+export default function OrderBox({ salePrice }) {
     return (
         <Box display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" justifyContent="center">
-                <TotalPrice />
+                <TotalPrice salePrice={salePrice}/>
             </Box>
             <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
                 <BuyButton />
