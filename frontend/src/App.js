@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Test from './components/UserList';
 import Lending from './pages/Lending';
 import Mypage from './pages/Mypage';
+import CartList from './pages/CartList';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/test' element={<Test />} />
           <Route path='/mypage' element={<Mypage />} />
+          <Route path='/mycart' element={<CartList/>} />
           {/* <Route path="/guestbook" element={<Guestbook />} /> */}
         </Routes>
       </Layout>
