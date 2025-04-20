@@ -112,8 +112,8 @@ const Main = () => {
                         <Thumbnail src={post.thumbnail} alt={post.title} />
                         <CardContent>
                             <Title>{post.title}</Title>
-                            <Description>{post.description}</Description>
-                            <ReadMore href={post.link}>Read More</ReadMore>
+                            <Description>₩ {post.salePrice.toLocaleString()}</Description>
+                            {/* <ReadMore href={post.link}>Read More</ReadMore> */}
                         </CardContent>
                     </Card>
                 ))}
