@@ -34,6 +34,7 @@ export const Thumbnail = styled.img`
   width: 100%;
   height: 30vh;
   object-fit: contain;
+  margin-top: 5vh;
 
   
 `;
