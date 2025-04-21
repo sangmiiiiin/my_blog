@@ -8,7 +8,7 @@ import { AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, 
 import HeaderDrawer from '../components/HeaderDrawer';
 
 const pages = ['Guestbook', 'Home', 'Login'];
-const afterLoginPages = ['Home', 'Create', 'Logout', 'Mypage'];
+const afterLoginPages = ['Home', 'Create', 'Cart', 'Logout', 'Mypage'];
 const settings = ['Register', 'Login'];
 
 
@@ -73,6 +73,14 @@ function Header() {
       } else if (item === "Mypage") {
         return (
           <Link to={"/mypage"}>
+            <Button key={item} sx={{ my: 2, color: 'black' }}>
+              {item}
+            </Button>
+          </Link>
+        )
+      } else if (item === "Cart") {
+        return (
+          <Link to={"/mycart"}>
             <Button key={item} sx={{ my: 2, color: 'black' }}>
               {item}
             </Button>

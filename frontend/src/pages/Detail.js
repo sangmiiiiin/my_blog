@@ -120,7 +120,17 @@ const Detail = () => {
                     />
                 </Box>
 
-                <OrderBox salePrice={post.salePrice}/>
+                <OrderBox 
+                    salePrice={post.salePrice}
+                    cartItem={{ 
+                        productId: id, 
+                        quantity: 1,
+                        selectedOptions: {
+                            size: size,
+                            color: color,
+                        }
+                    }} 
+                />
 
                 <DetailSection detailContent={post.detailContent} />
 

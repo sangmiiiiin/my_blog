@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import ShareIcon from '@mui/icons-material/Share';
+import axios from "axios";
 
 
 
@@ -42,12 +43,34 @@ const BuyButton = () => {
     );
 }
 
-const ThreeButton = () => {
+const ThreeButton = ({cartItem}) => {
+    let props = cartItem
+    const handleAddCart = async () => {
+        try {
+            const response = await axios.post(
+                "http://localhost:5700/cart/add", 
+                 {
+                    productId: props.productId,
+                    quantity: props.quantity,
+                    selectedOptions: [
+                        props.selectedOptions.fontSize,
+                        props.selectedOptions.color,
+                    ]
+                },
+                { withCredentials: true }
+            );
+            console.log("장바구니 추가 성공:", response.data)
+            alert("장바구니에 추가되었어요!");
+        } catch (error) {
+            console.error("장바구니 추가 실패:", error.response?.data || error.message);
+        }
+    }
     return (
         <Box display="flex" justifyContent="center" sx={{ mt: 0.5 }} gap={0.8}>
             <Button
                 variant="outlined"
                 sx={{ width: "29%", color: "black", borderColor: "black" }}
+                onClick={handleAddCart}
             >
                 CART
             </Button>
@@ -66,7 +89,8 @@ const ThreeButton = () => {
 
 
 
-export default function OrderBox({ salePrice }) {
+export default function OrderBox({ salePrice, cartItem }) {
+    // console.log("props: ", cartItem)
     return (
         <Box display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" justifyContent="center">
@@ -75,7 +99,7 @@ export default function OrderBox({ salePrice }) {
             <Box display="flex" justifyContent="center" sx={{ mt: 2 }}>
                 <BuyButton />
             </Box>
-                <ThreeButton />
+                <ThreeButton cartItem={cartItem}/>
         </Box>
     );
 }
