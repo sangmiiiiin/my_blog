@@ -21,7 +21,7 @@ const Login = () => {
             );
             if (response.status === 200) {
                 dispatch(loginSuccess(response.data.user)); // Redux 상태 업데이트
-                console.log("로그인 성공! 토큰: ", response.data.token); // 콘솔에 출력
+                // console.log("로그인 성공! 토큰: ", response.data.token); // 콘솔에 출력
                 alert("로그인 성공!");
                 navigate("/main"); // 메인 페이지 이동
             }
