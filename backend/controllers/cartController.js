@@ -32,3 +32,20 @@ exports.addToCart = async (req, res) => {
     res.status(500).json({ error: "장바구니 추가 실패" });
   }
 };
+
+exports.getCart = async(req, res) => {
+  const userId = req.user.id; 
+
+  try {
+    const cart = await Cart.findOne({ userId }).populate('items.product');
+
+    if (!cart) {
+      return res.status(404).json({ message: "장바구니가 비어 있습니다." });
+    }
+
+    res.status(200).json(cart);
+  } catch (error) {
+    console.error("장바구니 조회 실패:", error);
+    res.status(500).json({ message: "서버 오류" });
+  }
+};

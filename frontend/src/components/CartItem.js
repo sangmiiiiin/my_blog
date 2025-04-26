@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Card, CardContent, CardMedia, Typography, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
 
 export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
   const { image, name, color, size, price, quantity } = item;
-
+  useEffect(async () => {
+    try {
+      const response = await axios.get("http://localhost:5700/cart/show",
+        { withCredentials: true } // 쿠키포함
+      );
+      console.log("불러오기 성공:", response.data);
+    } catch (error) {
+      console.error("장바구니 불러오기 오류:", error.response ? error.response.data : error);
+    }
+  }, [])
   return (
     <Card sx={{ display: "flex", mb: 2, p: 1 }}>
       <CardMedia

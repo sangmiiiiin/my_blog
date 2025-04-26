@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartItem from "../components/CartItem";
 
 export default function CartList() {
     return(
         <CartItem
             item={{
-                image: "https://via.placeholder.com/100",
+                thumbnail: "https://via.placeholder.com/100",
                 name: "반팔티셔츠",
                 color: "Black",
                 size: "M",
