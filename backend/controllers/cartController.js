@@ -53,7 +53,6 @@ exports.getCart = async(req, res) => {
 exports.deleteToCart = async (req, res) => {
   const userId = req.user.id;
   const { productId } = req.body;
-  console.log(req.body);
 
   try {
     const cart = await Cart.findOneAndUpdate(
