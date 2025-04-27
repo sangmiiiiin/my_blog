@@ -30,25 +30,25 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
           <CardMedia
             component="img"
             image={cart.product.thumbnail}
-            alt={name}
+            alt={cart.product.title}
             sx={{ width: 100, height: 100, borderRadius: 2 }}
           />
 
           <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1, ml: 2 }}>
             <CardContent sx={{ pb: "0 !important" }}>
-              <Typography variant="subtitle1">{name}</Typography>
+              <Typography variant="subtitle1">{cart.product.title}</Typography>
               <Typography variant="body2" color="text.secondary">
-                색상: {color} / 사이즈: {size}
+                색상: {cart.selectedOptions.color} / 사이즈: {cart.selectedOptions.size}
               </Typography>
             </CardContent>
 
             <Box sx={{ display: "flex", alignItems: "center", mt: 1, px: 2 }}>
               <Button size="small" onClick={onDecrease}>-</Button>
-              <Typography sx={{ mx: 2 }}>{quantity}</Typography>
+              <Typography sx={{ mx: 2 }}>{cart.quantity}</Typography>
               <Button size="small" onClick={onIncrease}>+</Button>
 
               <Typography sx={{ ml: "auto" }}>
-                {(price * quantity).toLocaleString()}원
+                {(cart.product.salePrice * cart.quantity).toLocaleString()}원
               </Typography>
             </Box>
           </Box>

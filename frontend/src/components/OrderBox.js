@@ -45,6 +45,7 @@ const BuyButton = () => {
 
 const ThreeButton = ({cartItem}) => {
     let props = cartItem
+    console.log(cartItem);
     const handleAddCart = async () => {
         try {
             const response = await axios.post(
@@ -52,10 +53,10 @@ const ThreeButton = ({cartItem}) => {
                  {
                     productId: props.productId,
                     quantity: props.quantity,
-                    selectedOptions: [
-                        props.selectedOptions.fontSize,
-                        props.selectedOptions.color,
-                    ]
+                    selectedOptions: {
+                        size: props.selectedOptions.size,
+                        color: props.selectedOptions.color,
+                    }
                 },
                 { withCredentials: true }
             );
@@ -90,7 +91,7 @@ const ThreeButton = ({cartItem}) => {
 
 
 export default function OrderBox({ salePrice, cartItem }) {
-    // console.log("props: ", cartItem)
+    console.log("props: ", cartItem)
     return (
         <Box display="flex" flexDirection="column" justifyContent="center">
             <Box display="flex" justifyContent="center">

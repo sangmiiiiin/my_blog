@@ -120,7 +120,7 @@ const Detail = () => {
                     />
                 </Box>
 
-                <OrderBox 
+                <OrderBox
                     salePrice={post.salePrice}
                     cartItem={{ 
                         productId: id, 
