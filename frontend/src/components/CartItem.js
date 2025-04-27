@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
 export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
-  const { image, name, color, size, price, quantity } = item;
+  // const { image, name, color, size, price, quantity } = item;
   const [carts, setCarts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
           { withCredentials: true } // 쿠키포함
         );
         console.log("불러오기 성공:", response.data);
-        console.log("썸네일 URL:", response.data.items[0].product.thumbnail)
         setCarts(response.data.items)
       } catch (error) {
         console.error("장바구니 불러오기 오류:", error.response ? error.response.data : error);
@@ -53,7 +52,7 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             </Box>
           </Box>
 
-          <IconButton onClick={onRemove}>
+          <IconButton onClick={() => onRemove(cart.product._id)}>
             <DeleteIcon />
           </IconButton>
         </Card>

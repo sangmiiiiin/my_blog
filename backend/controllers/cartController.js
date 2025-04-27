@@ -49,3 +49,26 @@ exports.getCart = async(req, res) => {
     res.status(500).json({ message: "서버 오류" });
   }
 };
+
+exports.deleteToCart = async (req, res) => {
+  const userId = req.user.id;
+  const { productId } = req.body;
+  console.log(req.body);
+
+  try {
+    const cart = await Cart.findOneAndUpdate(
+      { userId },
+      { $pull: { items: { _id: productId } } }, // 배열에서 product와 일치하는 항목 삭제
+      { new: true }
+    );
+  
+  if (!cart) {
+    return res.status(404).json({ message: "장바구니를 찾을 수 없습니다." });
+  }
+
+  res.status(200).json({ message: "상품이 장바구니에서 삭제되었습니다.", cart });
+  } catch (error) {
+    console.error("장바구니 상품 삭제 오류:", error);
+    res.status(500).json({ message: "서버 오류" });
+  }
+};
