@@ -1,6 +1,7 @@
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description } from '../../styles/MainStyles'; // 스타일 파일에서 import
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CategoryTitle from '../../components/CategoryTitle';
 
 
 
@@ -20,20 +21,23 @@ export default function Shirt() {
 
 
     return (
-        <CardContainer>
-            {posts.map(post => (
-                <Card
-                    key={post.id}
-                    style={{ backgroundColor: "white" }}
-                    onClick={() => navigate(`/posts/${post._id}`)}
-                >
-                    <Thumbnail src={post.thumbnail} alt={post.title} />
-                    <CardContent>
-                        <Title>{post.title}</Title>
-                        <Description>₩ {Number(post.salePrice).toLocaleString()}</Description>
-                    </CardContent>
-                </Card>
-            ))}
-        </CardContainer>
+        <>
+            <CategoryTitle title={"상의"} subTitle={"BEST ITEM"}/>
+            <CardContainer>
+                {posts.map(post => (
+                    <Card
+                        key={post.id}
+                        style={{ backgroundColor: "white" }}
+                        onClick={() => navigate(`/posts/${post._id}`)}
+                    >
+                        <Thumbnail src={post.thumbnail} alt={post.title} />
+                        <CardContent>
+                            <Title>{post.title}</Title>
+                            <Description>₩ {Number(post.salePrice).toLocaleString()}</Description>
+                        </CardContent>
+                    </Card>
+                ))}
+            </CardContainer>
+        </>
     );
 };
