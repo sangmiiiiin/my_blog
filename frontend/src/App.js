@@ -28,6 +28,9 @@ function App() {
           <Route path='/test' element={<Test />} />
           <Route path='/mypage' element={<Mypage />} />
           <Route path='/mycart' element={<CartList/>} />
+          <Route path='/shirt' element={<Shirt/>} />
+          <Route path='/pants' element={<Pants/>} />
+          <Route path='/etc' element={<Etc/>} />
           {/* <Route path="/guestbook" element={<Guestbook />} /> */}
         </Routes>
       </Layout>
