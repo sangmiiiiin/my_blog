@@ -11,6 +11,9 @@ import Test from './components/UserList';
 import Lending from './pages/Lending';
 import Mypage from './pages/Mypage';
 import CartList from './pages/CartList';
+import Shirt from './pages/Category/Shirt';
+import Pants from './pages/Category/Pants';
+import Etc from './pages/Category/Etc';
 // import Guestbook from './pages/Guestbook';
 
 function App() {
