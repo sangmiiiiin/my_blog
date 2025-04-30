@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { checkAuth, logout } from '../redux/authSlice';
@@ -13,8 +13,8 @@ const settings = ['Register', 'Login'];
 
 
 function Header() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -191,7 +191,7 @@ function Header() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{}}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
