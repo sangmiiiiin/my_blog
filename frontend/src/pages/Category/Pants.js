@@ -1,7 +1,8 @@
 import { CardContainer, Card, Thumbnail, CardContent, Title, Description } from '../../styles/MainStyles'; // 스타일 파일에서 import
-import React, { useState } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryTitle from '../../components/CategoryTitle';
+import axios from 'axios';
 
 
 
@@ -17,6 +18,15 @@ export default function Pants() {
         },
     ])
     const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get("http://localhost:5700/posts")
+            .then(response => {
+                const filtered = response.data.filter(post => post.category === "하의");
+                setPosts(filtered);
+            })
+            .catch(error => console.error("데이터 불러오기 오류:", error));
+    }, []);
 
 
 

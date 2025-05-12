@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Box, Button, Card, CardContent, Chip, MenuItem, Paper, TextField, Typography } from "@mui/material";
 
-const categoryOptions = ['의류', '기타'];
+const categoryOptions = ['상의', '하의', '기타'];
 
 
 const Create = () => {
@@ -73,7 +73,7 @@ const Create = () => {
                 salePrice,
                 detailContent,
                 category,
-                options: category === "의류" ? { sizes, colors } : null,
+                options: category === '상의' || category === "하의" ? { sizes, colors } : null,
                 thumbnail: imageUrl, // 업로드된 이미지 URL 저장
             });
             navigate("/main", { state: { success: true } });
@@ -139,7 +139,7 @@ const Create = () => {
                                     </MenuItem>
                                 ))}
                             </TextField>
-                            {category === "의류" && (
+                            {(category === "상의" || category === "하의") && (
                                 <>
                                     <Box display="flex" gap={1} alignItems="center">
                                         <TextField
